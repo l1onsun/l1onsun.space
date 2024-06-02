@@ -75,6 +75,8 @@
     nil
     rathole
     difftastic
+    w3m
+    just
     
     grim # screenshot functionality
     slurp # screenshot functionality
