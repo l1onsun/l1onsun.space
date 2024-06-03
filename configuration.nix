@@ -37,9 +37,6 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
-  
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -77,6 +74,7 @@
     difftastic
     w3m
     just
+    speedtest-cli
     
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -84,10 +82,16 @@
     mako # notification system deveoped by swaywm maintainer
   ];
   environment.variables.EDITOR = "hx";
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    iosevka
+  ]
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  programs.fish.enable = true;
+  # programs.fish.enable = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
