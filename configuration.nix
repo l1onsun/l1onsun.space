@@ -75,6 +75,7 @@
     w3m
     just
     speedtest-cli
+    jujutsu
     
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -91,7 +92,7 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.fish.enable = true;
+  programs.fish.enable = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
