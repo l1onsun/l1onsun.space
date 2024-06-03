@@ -87,7 +87,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
     iosevka
-  ]
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
