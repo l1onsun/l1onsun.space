@@ -78,6 +78,7 @@
     jujutsu
 
     niri
+    sway
     
     grim # screenshot functionality
     slurp # screenshot functionality
