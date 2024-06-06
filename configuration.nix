@@ -76,6 +76,8 @@
     just
     speedtest-cli
     jujutsu
+
+    niri
     
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -93,10 +95,10 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.fish.enable = true;
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
