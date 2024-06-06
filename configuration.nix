@@ -54,7 +54,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.l1onsun = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "sudo" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "sudo" "video" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ starship ];
     shell = pkgs.fish;
   };
