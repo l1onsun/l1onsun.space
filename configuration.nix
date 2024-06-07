@@ -71,6 +71,7 @@
     broot 
     zoxide
     nil
+    nixfmt-rfc-style
     rathole
     difftastic
     w3m
@@ -78,14 +79,10 @@
     speedtest-cli
     jujutsu
     cachix
-
-    niri
-    sway
-    
+  
     alacritty
     firefox
-    grim # screenshot functionality
-    slurp # screenshot functionality
+    librewolf
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system deveoped by swaywm maintainer
   ];
@@ -97,35 +94,16 @@
     iosevka
   ];
 
-  # probably need for sway:
-  security.polkit.enable = true;
-  # security.rtkit.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   alsa.enable = true;
-  #   alsa.support32Bit = true;
-  #   pulse.enable = true;
+  # programs.niri.settings = {
+  #   input.keyboard.xkb = {
+  #     layout = "us,ru";
+  #     options = "grp:alt_shift_toggle";
+  #   };
+  #   repeat-delay = 180;
+  #   repeat-rate = 30;
   # };
-  # xdg.portal = {
-  #   enable = true;
-  #   wlr.enable = true;
-  #   extraPortals = with pkgs; [
-  #     xdg-desktop-portal-wlr
-  #   ];
-  # };
-  
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
   programs.fish.enable = true;
-  # programs.sway = {
-  #   enable = true;
-  #   wrapperFeatures.gtk = true;
-  # };
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 
