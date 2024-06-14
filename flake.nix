@@ -21,7 +21,8 @@
     helix.url = "github:helix-editor/helix";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: 
+  outputs =
+    inputs@{ nixpkgs, home-manager, ... }:
     {
       nixosConfigurations.nixi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -29,16 +30,12 @@
           ./configuration.nix
           home-manager.nixosModules.home-manager
           {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.l1onsun = import ./home.nix;
-              nixpkgs.overlays = [
-                (final: prev: {
-                  helix = inputs.helix.packages.${final.system}.default ;
-                })
-              ];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.l1onsun = import ./home.nix;
+            nixpkgs.overlays = [ (final: prev: { helix = inputs.helix.packages.${final.system}.default; }) ];
           }
         ];
       };
-  };
+    };
 }
