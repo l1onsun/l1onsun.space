@@ -27,6 +27,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    niri-unstable
     neofetch
 
     # utils
@@ -81,7 +82,7 @@
     # ethtool
     # pciutils # lspci
     # usbutils # lsusb
-    niri
+    # niri
 
     alacritty
     firefox
@@ -89,6 +90,19 @@
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system deveoped by swaywm maintainer
   ];
+  programs.niri.package = pkgs.niri-unstable;
+  programs.niri.settings = {
+    input = {
+      keyboard = {
+        xkb = {
+          layout = "us,ru";
+          options = "grp:alt_shift_toggle";
+        };
+      };
+      # repeat-delay = 180;
+      # repeat-rate = 30;
+    };
+  };
 
   # basic configuration of git, please change to your own
   programs.git = {
