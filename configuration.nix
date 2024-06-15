@@ -64,7 +64,6 @@
       "sudo"
       "video"
     ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ starship ];
     shell = pkgs.fish;
   };
 
@@ -82,6 +81,7 @@
     git
     tmux
     fish
+    starship
     helix
     broot
     zoxide
@@ -94,12 +94,6 @@
     speedtest-cli
     jujutsu
     cachix
-
-    alacritty
-    firefox
-    librewolf
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    mako # notification system deveoped by swaywm maintainer
   ];
   environment.variables.EDITOR = "hx";
   fonts.packages = with pkgs; [
@@ -109,15 +103,6 @@
     iosevka
   ];
 
-  # programs.niri.settings = {
-  #   input.keyboard.xkb = {
-  #     layout = "us,ru";
-  #     options = "grp:alt_shift_toggle";
-  #   };
-  #   repeat-delay = 180;
-  #   repeat-rate = 30;
-  # };
-
   programs.fish.enable = true;
 
   # List services that you want to enable:
@@ -126,7 +111,6 @@
   services.openssh.enable = true;
   # Enable the gnome-keyring secrets vault. 
   # Will be exposed through DBus to programs willing to store secrets.
-  services.gnome.gnome-keyring.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # Open ports in the firewall.
@@ -140,22 +124,6 @@
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
 
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
+  system.stateVersion = "23.11"; # DO NOT CHANGE!
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "23.11"; # Did you read the comment?
-
 }
