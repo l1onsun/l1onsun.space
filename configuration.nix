@@ -102,6 +102,7 @@
     noto-fonts-emoji
     iosevka
   ];
+  security.polkit.enable = true;
 
   programs.fish.enable = true;
 
