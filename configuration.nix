@@ -6,10 +6,15 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
 {
+  nixpkgs.overlays = [
+    (final: prev: { helix = inputs.helix.packages.${final.system}.default; })
+    inputs.niri.overlays.niri
+  ];
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -17,6 +22,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixi"; # Define your hostname.
@@ -82,7 +88,8 @@
     tmux
     fish
     starship
-    helix
+    # helix
+    inputs.helix.packages."x86_64-linux".default
     broot
     zoxide
     nil
@@ -106,6 +113,18 @@
 
   programs.fish.enable = true;
 
+  # programs.niri.package = pkgs.niri-unstable;
+  # programs.niri.enable = true;
+  # programs.niri.settings.input = {
+  #   keyboard = {
+  #     xkb = {
+  #       layout = "us,ru";
+  #       options = "grp:alt_shift_toggle";
+  #     };
+  #   };
+  #   repeat-delay = 180;
+  #   repeat-rate = 30;
+  # };
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

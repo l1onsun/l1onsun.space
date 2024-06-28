@@ -26,18 +26,22 @@
   outputs = inputs: {
     nixosConfigurations.nixi = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = [
+        # {
+        #   nixpkgs.overlays = [
+        #     (final: prev: { helix = inputs.helix.packages.${final.system}.default; })
+        #     inputs.niri.overlays.niri
+        #   ];
+        # }
+        # inputs.niri.nixosModules.niri
+        # inputs.niri.homeModules.niri
         ./configuration.nix
         inputs.home-manager.nixosModules.home-manager
-        inputs.niri.nixosModules.niri
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.l1onsun = import ./home.nix;
-          nixpkgs.overlays = [
-            (final: prev: { helix = inputs.helix.packages.${final.system}.default; })
-            inputs.niri.overlays.niri
-          ];
         }
       ];
     };
