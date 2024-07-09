@@ -19,8 +19,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix.url = "github:helix-editor/helix";
-    niri.url = "github:sodiboo/niri-flake";
+    # helix.url = "github:helix-editor/helix";
+    # niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs = inputs: {
@@ -36,6 +36,7 @@
         # }
         # inputs.niri.nixosModules.niri
         # inputs.niri.homeModules.niri
+
         ./configuration.nix
         inputs.home-manager.nixosModules.home-manager
         {

@@ -11,10 +11,10 @@
 }:
 
 {
-  nixpkgs.overlays = [
-    (final: prev: { helix = inputs.helix.packages.${final.system}.default; })
-    inputs.niri.overlays.niri
-  ];
+  # nixpkgs.overlays = [
+  #   (final: prev: { helix = inputs.helix.packages.${final.system}.default; })
+  #   inputs.niri.overlays.niri
+  # ];
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -88,8 +88,8 @@
     tmux
     fish
     starship
-    # helix
-    inputs.helix.packages."x86_64-linux".default
+    helix
+    # inputs.helix.packages."x86_64-linux".default
     broot
     zoxide
     nil
