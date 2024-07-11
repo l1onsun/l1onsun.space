@@ -28,7 +28,7 @@
   networking.hostName = "nixi"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Kaliningrad";
@@ -110,6 +110,7 @@
     iosevka
   ];
   security.polkit.enable = true;
+  security.rtkit.enable = true;  # for pulseaudio?? not sure it necessery
 
   programs.fish.enable = true;
 
@@ -127,6 +128,14 @@
   # };
   # List services that you want to enable:
 
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   # Enable the gnome-keyring secrets vault. 

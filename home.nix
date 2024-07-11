@@ -28,6 +28,7 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     niri
+    sway
     neofetch
 
     # utils
@@ -130,8 +131,9 @@
     settings = {
       env.TERM = "xterm-256color";
       font = {
-        size = 14;
-        normal.family = "Iosevka Term";
+        size = 18;
+        # normal.family = "Iosevka Term";
+        normal.family = "Iosevka";
         # draw_bold_text_with_bright_colors = true;
       };
       # scrolling.multiplier = 5;
