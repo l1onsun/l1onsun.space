@@ -69,6 +69,7 @@
     # glow # markdown previewer in terminal
 
     btop # replacement of htop/nmon
+    smartmontools
     # iotop # io monitoring
     # iftop # network monitoring
 
@@ -110,6 +111,12 @@
     enable = true;
     userName = "Ilya";
     userEmail = "ilya@cherezov.space";
+  };
+
+  programs.direnv = {
+    enable = true;
+    # enableBashIntegration = true; # see note on other shells below
+    nix-direnv.enable = true;
   };
 
   # starship - an customizable prompt for any shell

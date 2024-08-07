@@ -69,6 +69,7 @@
       "wheel"
       "sudo"
       "video"
+      "docker"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
   };
@@ -141,6 +142,26 @@
   # Enable the gnome-keyring secrets vault. 
   # Will be exposed through DBus to programs willing to store secrets.
   services.xserver.videoDrivers = [ "nvidia" ];
+
+
+  systemd.services.my-rathole-clinet = {
+    enable = true;
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    description = "My rathole clinet ssh service";
+    serviceConfig = {
+        Type = "simple";
+        Restart="on-failure";
+        RestartSec="5s";
+        ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client2.toml";
+    };
+  };
+
+  # TODO: rootless docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.package = pkgs.docker_26;
+  virtualisation.docker.storageDriver = "btrfs";
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
