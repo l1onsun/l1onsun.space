@@ -143,6 +143,17 @@
   # Will be exposed through DBus to programs willing to store secrets.
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # services.caddy = {
+  #   enable = true;
+  #   virtualHosts."chereov.xyz".extraConfig = ''
+  #     respond "Work in progress!"
+  #   '';
+  #   virtualHosts."photo.chereov.xyz".extraConfig = ''
+  #     reverse_proxy http://0.0.0.0:2283
+  #   '';
+  # };
+  networking.firewall.allowedTCPPorts = [ 2283 ];
+
 
   systemd.services.my-rathole-clinet = {
     enable = true;
@@ -156,6 +167,30 @@
         ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client2.toml";
     };
   };
+  systemd.services.my-rathole-clinet-immich = {
+    enable = true;
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    description = "My rathole clinet immich service";
+    serviceConfig = {
+        Type = "simple";
+        Restart="on-failure";
+        RestartSec="5s";
+        ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client_immich.toml";
+    };
+  };
+  # systemd.services.my-rathole-clinet-https = {
+  #   enable = true;
+  #   after = [ "network.target" ];
+  #   wantedBy = [ "multi-user.target" ];
+  #   description = "My rathole clinet https service";
+  #   serviceConfig = {
+  #       Type = "simple";
+  #       Restart="on-failure";
+  #       RestartSec="5s";
+  #       ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client_https.toml";
+  #   };
+  # };
 
   # TODO: rootless docker
   virtualisation.docker.enable = true;

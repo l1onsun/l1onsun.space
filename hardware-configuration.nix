@@ -38,6 +38,11 @@
     ];
   };
 
+  fileSystems."/hdd12" = {
+    device = "/dev/disk/by-uuid/0250c107-84af-4a2f-b538-fc708a8d7ec1";
+    fsType = "btrfs";
+  };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -64,9 +69,9 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+  # hardware.opengl = {
+  #   enable = true;
+  #   driSupport = true;
+  #   driSupport32Bit = true;
+  # };
 }
