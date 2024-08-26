@@ -88,6 +88,7 @@
 
     alacritty
     firefox
+    nyxt
     librewolf
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system deveoped by swaywm maintainer
