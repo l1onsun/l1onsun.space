@@ -90,6 +90,7 @@
     fish
     starship
     helix
+    bat
     # inputs.helix.packages."x86_64-linux".default
     broot
     zoxide
@@ -100,8 +101,9 @@
     w3m
     just
     speedtest-cli
-    jujutsu
-    cachix
+    onefetch
+    # jujutsu
+    # cachix
   ];
   environment.variables.EDITOR = "hx";
   fonts.packages = with pkgs; [
