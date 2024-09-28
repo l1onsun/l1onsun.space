@@ -18,6 +18,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./programs/nix-ld.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -85,14 +86,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    git
     tmux
     fish
     starship
     helix
     bat
+    tree
+    zellij
     # inputs.helix.packages."x86_64-linux".default
     broot
+    yazi
+    ueberzugpp
     zoxide
     nil
     nixfmt-rfc-style
@@ -102,6 +106,8 @@
     just
     speedtest-cli
     onefetch
+    skopeo
+    ncdu
     # jujutsu
     # cachix
   ];
@@ -111,11 +117,18 @@
     noto-fonts-cjk
     noto-fonts-emoji
     iosevka
+    font-awesome
   ];
   security.polkit.enable = true;
   security.rtkit.enable = true;  # for pulseaudio?? not sure it necessery
+  security.sudo.package = pkgs.sudo.override { withInsults = true; };
 
   programs.fish.enable = true;
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+  };
 
   # programs.niri.package = pkgs.niri-unstable;
   # programs.niri.enable = true;
@@ -181,18 +194,18 @@
         ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client_immich.toml";
     };
   };
-  # systemd.services.my-rathole-clinet-https = {
-  #   enable = true;
-  #   after = [ "network.target" ];
-  #   wantedBy = [ "multi-user.target" ];
-  #   description = "My rathole clinet https service";
-  #   serviceConfig = {
-  #       Type = "simple";
-  #       Restart="on-failure";
-  #       RestartSec="5s";
-  #       ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client_https.toml";
-  #   };
-  # };
+  systemd.services.my-rathole-clinet-happy = {
+    enable = true;
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    description = "My rathole clinet happy service";
+    serviceConfig = {
+        Type = "simple";
+        Restart="on-failure";
+        RestartSec="5s";
+        ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client_happy_predictions.toml";
+    };
+  };
 
   # TODO: rootless docker
   virtualisation.docker.enable = true;
