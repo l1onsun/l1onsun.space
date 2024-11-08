@@ -1,3 +1,5 @@
+set shell := ["fish", "-c"]
+
 switch:
     sudo nixos-rebuild switch --flake "."
 

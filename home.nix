@@ -99,6 +99,9 @@
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system deveoped by swaywm maintainer
     fuzzel
+
+    tuxguitar
+    telegram-desktop
   ];
   # programs.niri.package = pkgs.niri-unstable;
   # programs.niri.enable = true;
@@ -114,6 +117,7 @@
   # };
 
   # basic configuration of git, please change to your own
+  programs.light.enable = true;
   programs.waybar.enable = true;
   programs.git = {
     enable = true;
