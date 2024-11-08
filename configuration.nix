@@ -123,6 +123,7 @@
   security.rtkit.enable = true;  # for pulseaudio?? not sure it necessery
   security.sudo.package = pkgs.sudo.override { withInsults = true; };
 
+  programs.light.enable = true;
   programs.fish.enable = true;
   programs.nh = {
     enable = true;

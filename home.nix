@@ -117,7 +117,6 @@
   # };
 
   # basic configuration of git, please change to your own
-  programs.light.enable = true;
   programs.waybar.enable = true;
   programs.git = {
     enable = true;
