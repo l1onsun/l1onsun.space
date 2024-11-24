@@ -5,8 +5,8 @@
   home.homeDirectory = "/home/l1onsun";
 
   imports = [
-    ./programs/helix.nix
-    ./programs/zellij.nix
+    ../programs/helix.nix
+    ../programs/zellij.nix
   ];
 
   # link the configuration file in current directory to the specified location in home directory
