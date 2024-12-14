@@ -92,6 +92,7 @@
     # usbutils # lsusb
     # niri
 
+    chromium
     alacritty
     firefox
     onlyoffice-bin
