@@ -1,11 +1,11 @@
-{
+{ font_size }: {
   programs.alacritty = {
     enable = true;
     # custom settings
     settings = {
       env.TERM = "xterm-256color";
       font = {
-        size = 18;
+        size = font_size;
         # normal.family = "Iosevka Term";
         normal.family = "Iosevka";
         # draw_bold_text_with_bright_colors = true;

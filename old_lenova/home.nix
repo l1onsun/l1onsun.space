@@ -8,7 +8,7 @@
     ../programs/helix.nix
     ../programs/zellij.nix
     ../programs/direnv.nix
-    ../programs/alacritty.nix
+    ../programs/alacritty.nix { font_size = 14 }
     ../programs/git.nix
     # ../programs/niri
     ../programs/sway.nix
