@@ -1,0 +1,10 @@
+{
+    tmux
+    fish
+    starship
+    helix
+    bat
+    tree
+    zellij
+    killall
+}

@@ -30,15 +30,6 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        # {
-        #   nixpkgs.overlays = [
-        #     (final: prev: { helix = inputs.helix.packages.${final.system}.default; })
-        #     inputs.niri.overlays.niri
-        #   ];
-        # }
-        # inputs.niri.nixosModules.niri
-        # inputs.niri.homeModules.niri
-
         ./nixi_home/configuration.nix
         inputs.home-manager.nixosModules.home-manager
         {
@@ -46,6 +37,20 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "hm-backup";
           home-manager.users.l1onsun = import ./nixi_home/home.nix;
+        }
+      ];
+    };
+    nixosConfigurations.oldlenova = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./old_lenova/configuration.nix
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hm-backup";
+          home-manager.users.l1onsun = import ./old_lenova/home.nix;
         }
       ];
     };

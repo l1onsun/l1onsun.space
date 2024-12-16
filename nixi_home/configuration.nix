@@ -16,8 +16,8 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../programs/nix-ld.nix
-    ../programs/rathole.nix
+    ../services/nix-ld.nix
+    ../services/rathole.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -171,42 +171,6 @@
   networking.firewall.allowedTCPPorts = [ 2283 8017 ];
 
 
-  # systemd.services.my-rathole-clinet = {
-  #   enable = true;
-  #   after = [ "network.target" ];
-  #   wantedBy = [ "multi-user.target" ];
-  #   description = "My rathole clinet ssh service";
-  #   serviceConfig = {
-  #       Type = "simple";
-  #       Restart="on-failure";
-  #       RestartSec="5s";
-  #       ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client2.toml";
-  #   };
-  # };
-  # systemd.services.my-rathole-clinet-immich = {
-  #   enable = true;
-  #   after = [ "network.target" ];
-  #   wantedBy = [ "multi-user.target" ];
-  #   description = "My rathole clinet immich service";
-  #   serviceConfig = {
-  #       Type = "simple";
-  #       Restart="on-failure";
-  #       RestartSec="5s";
-  #       ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client_immich.toml";
-  #   };
-  # };
-  # systemd.services.my-rathole-clinet-happy = {
-  #   enable = true;
-  #   after = [ "network.target" ];
-  #   wantedBy = [ "multi-user.target" ];
-  #   description = "My rathole clinet happy service";
-  #   serviceConfig = {
-  #       Type = "simple";
-  #       Restart="on-failure";
-  #       RestartSec="5s";
-  #       ExecStart = "${pkgs.rathole}/bin/rathole /home/l1onsun/my/services/rathole/client_happy_predictions.toml";
-  #   };
-  # };
 
   # TODO: rootless docker
   virtualisation.docker.enable = true;

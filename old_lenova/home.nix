@@ -10,6 +10,8 @@
     ../programs/direnv.nix
     ../programs/alacritty.nix
     ../programs/git.nix
+    # ../programs/niri
+    ../programs/sway.nix
   ];
 
   # link the configuration file in current directory to the specified location in home directory
