@@ -48,6 +48,7 @@
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -90,7 +91,7 @@
     ];
     shell = pkgs.fish;
   };
-
+  programs.fish.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -103,7 +104,6 @@
   ];
   environment.systemPackages = with pkgs; [
     tmux
-    fish
     starship
     helix
     bat
@@ -132,7 +132,6 @@
     font-awesome
   ];
   programs.light.enable = true;
-  programs.fish.enable = true;
   programs.nh = {
     enable = true;
     clean.enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ bar_font_size }: { pkgs, lib, config, ... }:
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -15,11 +15,23 @@
       in lib.mkOptionDefault {
         "${modifier}+tab" = "workspace back_and_forth";
         "${modifier}+n" = "exec swaync-client -t -sw";
+        "${modifier}+Shift+Return" = "exec ${pkgs.alacritty} -e fish -C 'my/gits/l1onsun.space/; onefetch'";
         "XF86MonBrightnessDown" = "exec light -U 5";
         "XF86MonBrightnessUp" = "exec light -A 5";
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+        "XF86TouchpadToggle" = "input type:touchpad events toggle enabled disabled";
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
+# bindsym XF86Search exec bemenu-run
       };
       bars = [{
-        statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs";
+        statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs config-default.toml";
+        position = "top";
+        fonts.size = bar_font_size;
       }];
       input."type:touchpad" = {
         accel_profile = "flat";
@@ -51,11 +63,61 @@
     # }
   };
 
-
   home.packages = [
     pkgs.swaynotificationcenter
   ];
+
+  services.gammastep = {
+    enable = true;
+    provider = "manual";
+    latitude = 54.72;
+    longitude = 20.51;
+  };
   programs.i3status-rust = {
     enable = true;
+    bars.default = {
+      theme = "plain";
+      icons = "awesome5";
+      blocks = [
+        {
+          block = "time";
+          interval = 5;
+          format = " $timestamp.datetime(f:'%R') ";
+        }
+        {
+          block = "net";
+          device = "wlan0";
+          format = "$ssid $signal_strength $ip $graph_down $speed_down";
+          interval = 5;
+        }
+        {
+          block = "battery";
+        }
+        {
+          block = "keyboard_layout";
+          driver = "sway";
+        }
+        {
+          block = "hueshift";
+          hue_shifter = "gammastep";
+          step = 50;
+          click_temp = 4000;
+        }
+        {
+          block = "load";
+          interval = 1;
+          format = "$1m";
+        }
+        {
+          block = "sound";
+        }
+        {
+          block = "time";
+          interval = 60;
+          format = " $timestamp.datetime(f:'%a %d') ";
+        }
+      ];
+    };
   };
 }
+

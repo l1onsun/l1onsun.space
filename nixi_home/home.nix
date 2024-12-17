@@ -8,7 +8,7 @@
     ../programs/helix.nix
     ../programs/zellij.nix
     ../programs/direnv.nix
-    ../programs/alacritty.nix { font_size = 18 }
+    (import ../programs/alacritty.nix { font_size = 18; })
     ../programs/git.nix
   ];
 
@@ -35,9 +35,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    niri
     neofetch
-    waybar
 
     # utils
     ripgrep # recursively searches directories for a regex pattern
@@ -45,38 +43,7 @@
     # eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
 
-    # # networking tools
-    # mtr # A network diagnostic tool
-    # iperf3
-    # dnsutils  # `dig` + `nslookup`
-    # ldns # replacement of `dig`, it provide the command `drill`
-    # aria2 # A lightweight multi-protocol & multi-source command-line download utility
-    # socat # replacement of openbsd-netcat
-    # nmap # A utility for network discovery and security auditing
-    # ipcalc  # it is a calculator for the IPv4/v6 addresses
-
-    # misc
-    # cowsay
-    # file
-    # which
-    # tree
-    # gnused
-    # gnutar
-    # gawk
-    # zstd
-    # gnupg
-
-    # nix related
-    #
-    # it provides the command `nom` works just like `nix`
-    # with more details log output
-    # nix-output-monitor
-
-    # productivity
-    # hugo # static site generator
-    # glow # markdown previewer in terminal
-
-    btop # replacement of htop/nmon
+    # btop # replacement of htop/nmon
     smartmontools
     # iotop # io monitoring
     # iftop # network monitoring
@@ -92,17 +59,13 @@
     # ethtool
     # pciutils # lspci
     # usbutils # lsusb
-    # niri
 
     chromium
     alacritty
     firefox
-    onlyoffice-bin
     nyxt
     librewolf
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    mako # notification system deveoped by swaywm maintainer
-    fuzzel
 
     tuxguitar
     telegram-desktop

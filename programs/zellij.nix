@@ -2,7 +2,7 @@
 {
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
+    # enableFishIntegration = true;
     settings = {
       theme = "rose_pine";
       themes.rose-pine = {

@@ -4,4 +4,5 @@
   home.packages = [
     pkgs.niri
   ];
+  programs.waybar.enable = true;
 }
