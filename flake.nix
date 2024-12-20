@@ -30,13 +30,13 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        ./nixi_home/configuration.nix
+        ./nixi/configuration.nix
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "hm-backup";
-          home-manager.users.l1onsun = import ./nixi_home/home.nix;
+          home-manager.users.l1onsun = import ./nixi/home.nix;
         }
       ];
     };
@@ -44,13 +44,13 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        ./old_lenova/configuration.nix
+        ./oldlenova/configuration.nix
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "hm-backup";
-          home-manager.users.l1onsun = import ./old_lenova/home.nix;
+          home-manager.users.l1onsun = import ./oldlenova/home.nix;
         }
       ];
     };
