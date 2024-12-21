@@ -15,14 +15,18 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     home-manager = {
-      # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # helix.url = "github:helix-editor/helix";
     # niri.url = "github:sodiboo/niri-flake";
+    nixpkgs-24-05.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-24-05";
+    };
   };
 
   outputs = inputs: {
@@ -52,6 +56,15 @@
           home-manager.backupFileExtension = "hm-backup";
           home-manager.users.l1onsun = import ./oldlenova/home.nix;
         }
+      ];
+    };
+    nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+      pkgs = import inputs.nixpkgs-24-05 { 
+        system = "aarch64-linux";
+        overlays = [ inputs.nix-on-droid.overlays.default ];
+      };
+      modules = [ 
+        ./droid/nix-on-droid.nix
       ];
     };
   };
