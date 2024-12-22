@@ -4,8 +4,13 @@
     enable = true;
     # enableFishIntegration = true;
     settings = {
+      simplified_ui = true;
+      default_shell = "fish";
+      default_layout = "compact";
+      # default_mode = "tmux";
+      pane_frames = false;
       theme = "rose_pine";
-      themes.rose-pine = {
+      themes.rose_pine = {
         bg = "#403d52";
         fg = "#e0def4";
         red = "#eb6f92";

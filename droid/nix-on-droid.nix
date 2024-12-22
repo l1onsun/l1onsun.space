@@ -7,12 +7,14 @@
     fish
     git
     openssh
-    tmux
+    htop
+    bottom
     bat
     tree
     zellij
     killall
     gawk
+    gnused
     # inputs.helix.packages."x86_64-linux".default
     yazi
     zoxide
@@ -23,9 +25,13 @@
     just
     onefetch
     ncdu
+    pueue
 
     iosevka
   ];
+  environment.sessionVariables = {
+    EDITOR = "helix";
+  };
   terminal.font = "${pkgs.iosevka}/share/fonts/truetype/Iosevka-Regular.ttf";
   terminal.colors = {
     background = "#191724";

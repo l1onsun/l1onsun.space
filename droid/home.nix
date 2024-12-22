@@ -13,13 +13,12 @@
   ];
 
   # Packages that should be installed to the user profile.
-  # home.packages = with pkgs; [
-  #   neofetch
-  #   ripgrep # recursively searches directories for a regex pattern
-  #   jq # A lightweight and flexible command-line JSON processor
-  #   fzf # A command-line fuzzy finder
-  #   smartmontools
-  # ];
+  home.packages = with pkgs; [
+    neofetch
+    ripgrep # recursively searches directories for a regex pattern
+    jq # A lightweight and flexible command-line JSON processor
+    fzf # A command-line fuzzy finder
+  ];
 
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
