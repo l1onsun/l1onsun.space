@@ -1,7 +1,8 @@
-{
+{pkgs, ...}: {
   programs.starship.enable = true;
   programs.fish = {
     enable = true;
+    package = pkgs.fish;
     interactiveShellInit = ''
       starship init fish | source
       direnv hook fish | source
@@ -35,4 +36,9 @@
       py = "python";
     };
   };
+  home.packages = [
+    pkgs.gawk
+    pkgs.gnused
+    pkgs.ps
+  ];
 }

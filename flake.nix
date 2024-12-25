@@ -25,7 +25,7 @@
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
       # inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs-24-05";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -60,11 +60,20 @@
     };
     nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
       pkgs = import inputs.nixpkgs-24-05 { 
+      # pkgs = import inputs.nixpkgs { 
         system = "aarch64-linux";
         overlays = [ inputs.nix-on-droid.overlays.default ];
       };
+      # specialArgs = { inherit inputs; };
       modules = [ 
         ./droid/nix-on-droid.nix
+        {
+          # Set all inputs parameters as special arguments for all submodules,
+          # so you can directly use all dependencies in inputs in submodules
+          _module.args = { 
+            upkgs = import inputs.nixpkgs { system = "aarch64-linux"; };
+          };
+        }
       ];
     };
   };

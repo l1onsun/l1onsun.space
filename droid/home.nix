@@ -1,19 +1,28 @@
-{ config, pkgs, ... }:
+{ config, pkgs, upkgs, ... }:
 
 {
   # home.username = "l1onsun";
   # home.homeDirectory = "/home/l1onsun";
+  nixpkgs.overlays = [
+    (self: super: {
+      skim = upkgs.skim;
+    })
+  ];
 
   imports = [
-    ../programs/helix.nix
+    (import ../programs/helix.nix {pkgs = upkgs;})
     ../programs/zellij.nix
     ../programs/direnv.nix
     ../programs/git.nix
-    ../programs/fish
+    (import ../programs/fish {pkgs = upkgs;})
+    (import ../programs/tmux.nix {pkgs = upkgs;})
   ];
-
+  programs.direnv.package = upkgs.direnv;
+  programs.zellij.package = upkgs.zellij;
+  programs.git.package = upkgs.git;
+  # programs.tmux.package = upkgs.tmux;
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [
+  home.packages = with upkgs; [
     neofetch
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor

@@ -116,7 +116,6 @@
     zoxide
     nil
     nixfmt-rfc-style
-    difftastic
     w3m
     just
     onefetch

@@ -1,44 +1,45 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, upkgs, ... }:
 
 {
   # Simply install just the packages
-  environment.packages = with pkgs; [
-    helix
-    fish
+  environment.packages = with upkgs; [
+    # helix
+    # fish
     git
     openssh
     htop
     bottom
     bat
     tree
-    zellij
     killall
-    gawk
-    gnused
     # inputs.helix.packages."x86_64-linux".default
     yazi
     zoxide
     nil
     nixfmt-rfc-style
-    difftastic
     w3m
     just
     onefetch
     ncdu
+    # tmux
+    # tmuxPlugins.rose-pine
+
     pueue
+    cmatrix
+    lolcat
 
     iosevka
   ];
   environment.sessionVariables = {
-    EDITOR = "helix";
+    EDITOR = "${upkgs.helix}/bin/hx";
   };
-  terminal.font = "${pkgs.iosevka}/share/fonts/truetype/Iosevka-Regular.ttf";
+  terminal.font = "${upkgs.iosevka}/share/fonts/truetype/Iosevka-Regular.ttf";
   terminal.colors = {
     background = "#191724";
     foreground = "#e0def4";
   };
 
-  user.shell = "${pkgs.fish}/bin/fish";
+  user.shell = "${upkgs.fish}/bin/fish";
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
   environment.etcBackupExtension = ".bak";
@@ -56,7 +57,8 @@
     config = ./home.nix;
     backupFileExtension = "hm-backup";
     useGlobalPkgs = true;
+    extraSpecialArgs = { inherit upkgs; };
   };
   # Set your time zone
-  #time.timeZone = "Europe/Berlin";
+  time.timeZone = "Europe/Kaliningrad";
 }

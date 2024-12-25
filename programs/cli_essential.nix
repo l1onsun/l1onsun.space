@@ -1,4 +1,4 @@
-{
+pkgs: with pkgs:[
     tmux
     fish
     starship
@@ -7,4 +7,4 @@
     tree
     zellij
     killall
-}
+]

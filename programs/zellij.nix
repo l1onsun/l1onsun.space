@@ -5,9 +5,18 @@
     # enableFishIntegration = true;
     settings = {
       simplified_ui = true;
+      session_serialization = false;
       default_shell = "fish";
+      # default_mode = "locked";
+      keybinds = {
+        normal = {
+          _props = { # This attribute defines KDL props.
+            clear-defaults = true;
+          };
+          "bind \"Ctrl b\"" = { SwitchToMode = "Tmux"; };
+        };
+      };
       default_layout = "compact";
-      # default_mode = "tmux";
       pane_frames = false;
       theme = "rose_pine";
       themes.rose_pine = {
