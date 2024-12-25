@@ -24,6 +24,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.tmp.useTmpfs = true;
 
   networking.hostName = "nixi"; # Define your hostname.
   # Pick only one of the below networking options.
