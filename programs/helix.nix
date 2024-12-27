@@ -66,5 +66,7 @@
     pkgs.pyright
     pkgs.black
     pkgs.typos-lsp
+    pkgs.nil
+    pkgs.nixfmt-rfc-style
   ];
 }

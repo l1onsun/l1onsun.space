@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   home.packages = [ pkgs.difftastic ];
+  programs.git.package = pkgs.git;
   programs.git = {
     enable = true;
     lfs.enable = true;

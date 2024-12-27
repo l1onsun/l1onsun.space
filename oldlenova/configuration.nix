@@ -92,8 +92,6 @@
     shell = pkgs.fish;
   };
   programs.fish.enable = true;
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -101,24 +99,6 @@
   nix.settings.trusted-users = [
     "root"
     "l1onsun"
-  ];
-  environment.systemPackages = with pkgs; [
-    tmux
-    starship
-    helix
-    bat
-    tree
-    killall
-    # inputs.helix.packages."x86_64-linux".default
-    broot
-    yazi
-    zoxide
-    nil
-    nixfmt-rfc-style
-    w3m
-    just
-    onefetch
-    ncdu
   ];
   environment.variables.EDITOR = "hx";
   fonts.packages = with pkgs; [
