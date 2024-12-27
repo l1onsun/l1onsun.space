@@ -108,7 +108,6 @@
     helix
     bat
     tree
-    zellij
     killall
     # inputs.helix.packages."x86_64-linux".default
     broot

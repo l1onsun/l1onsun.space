@@ -1,10 +1,10 @@
 pkgs: with pkgs:[
-    tmux
+    # tmux
     fish
     starship
     helix
     bat
     tree
-    zellij
+    # zellij
     killall
 ]

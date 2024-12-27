@@ -17,6 +17,8 @@
           for mode in default insert visual
               bind -M $mode \ej history-token-search-forward
               bind -M $mode \ek history-token-search-backward
+              # bind -M $mode \ee end-of-line
+              # bind -M $mode \cE edit_command_buffer
           end
       end
       set -g fish_key_bindings fish_hybrid_key_bindings

@@ -1,4 +1,5 @@
-{
+{ pkgs, ... }: {
+  home.packages = [ pkgs.difftastic ];
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -6,7 +7,7 @@
     userName = "Ilya";
     userEmail = "ilya@cherezov.space";
 
-    difftastic.enable = true;
+    # difftastic.enable = true;
     # config = {
     aliases = {
       st = "status -sb";
@@ -28,12 +29,15 @@
       # };
       core.quotepath = false;
       pull.ff = "only";
+
+      diff.tool = "difftastic";
+      difftool.prompt = false;
+      difftool.difftastic.cmd = ''difft "$LOCAL" "$REMOTE"'';
+      pager.difftool = true;
+
+      init.defaultBranch = "master";
     };
     
-    #   diff.tool = "difftastic";
-    #   difftool.prompt = false;
-    #   difftool.difftastic.cmd = ''difft "$LOCAL" "$REMOTE"'';
-    #   pager.difftool = true;
     # };
   };
 }

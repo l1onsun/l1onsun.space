@@ -6,7 +6,7 @@
 
   imports = [
     ../programs/helix.nix
-    ../programs/zellij.nix
+    ../programs/zellij
     ../programs/direnv.nix
     (import ../programs/alacritty.nix { font_size = 18; })
     ../programs/git.nix

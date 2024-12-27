@@ -27,24 +27,32 @@
     };
 
     languages = {
-      language = [{
-        name = "python";
-        language-servers = [
-          "pyright"
-          "typos"
-        ];
-        formatter = {
-          command = "sh";
-          args = [
-            "-c"
-            "black --quiet - | isort --profile black -"
+      language = [
+        {
+          name = "python";
+          language-servers = [
+            "pyright"
+            "typos"
           ];
-        };
-      }];
+          formatter = {
+            command = "sh";
+            args = [
+              "-c"
+              "black --quiet - | isort --profile black -"
+            ];
+          };
+        }
+        {
+          name = "nix";
+          formatter = {
+            command = "nixfmt";
+          };
+        }
+      ];
       language-server = {
         pyright = {
           command = "pyright-langserver";
-          args = ["--stdio"];
+          args = [ "--stdio" ];
           config.reportMissingTypeStubs = false;
           config.python.analysis.typeCheckingMode = "basic";
           config.python.analysis.autoImportCompletions = true;

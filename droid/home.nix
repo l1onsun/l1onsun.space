@@ -11,14 +11,14 @@
 
   imports = [
     (import ../programs/helix.nix {pkgs = upkgs;})
-    ../programs/zellij.nix
+    (import ../programs/zellij {pkgs = upkgs;})
     ../programs/direnv.nix
     ../programs/git.nix
     (import ../programs/fish {pkgs = upkgs;})
     (import ../programs/tmux.nix {pkgs = upkgs;})
   ];
   programs.direnv.package = upkgs.direnv;
-  programs.zellij.package = upkgs.zellij;
+  # programs.zellij.package = upkgs.zellij;
   programs.git.package = upkgs.git;
   # programs.tmux.package = upkgs.tmux;
   # Packages that should be installed to the user profile.
@@ -27,6 +27,8 @@
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
     fzf # A command-line fuzzy finder
+    sd
+    ipython
   ];
 
   # You can update home Manager without changing this value. See
