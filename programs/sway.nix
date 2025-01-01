@@ -48,6 +48,10 @@
         repeat_delay = "180";
         repeat_rate = "30";
       };
+      input."type:mouse" = {
+        accel_profile = "flat";
+        pointer_accel = "0.6";
+      };
 
       window = {
         hideEdgeBorders = "smart";

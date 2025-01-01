@@ -10,6 +10,7 @@
     ../programs/direnv.nix
     (import ../programs/alacritty.nix { font_size = 18; })
     ../programs/git.nix
+    (import ../programs/sway.nix { bar_font_size = 12.0; })
   ];
 
   # link the configuration file in current directory to the specified location in home directory
