@@ -18,6 +18,7 @@
     ./hardware-configuration.nix
     ../services/nix-ld.nix
     ../services/rathole.nix
+    ../services/smtp
   ];
 
   # Use the systemd-boot EFI boot loader.

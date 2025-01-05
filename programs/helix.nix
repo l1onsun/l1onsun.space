@@ -7,6 +7,7 @@
     settings = {
       theme = "rose_pine";
       editor = {
+        true-color = true;
         scrolloff = 10;
         auto-save = true;
         auto-pairs = false;
