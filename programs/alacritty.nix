@@ -3,7 +3,7 @@
     enable = true;
     # custom settings
     settings = {
-      env.TERM = "xterm-256color";
+      # env.TERM = "xterm-256color";
       font = {
         size = font_size;
         # normal.family = "Iosevka Term";

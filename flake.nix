@@ -33,7 +33,12 @@
   outputs = inputs: {
     nixosConfigurations.nixi = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs;
+        opkgs = import inputs.nixpkgs-24-05 {
+          system = "x86_64-linux";
+        };
+      };
       modules = [
         ./nixi/configuration.nix
         inputs.home-manager.nixosModules.home-manager
@@ -47,7 +52,12 @@
     };
     nixosConfigurations.oldlenova = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs;
+        opkgs = import inputs.nixpkgs-24-05 {
+          system = "x86_64-linux";
+        };
+      };
       modules = [
         ./oldlenova/configuration.nix
         inputs.home-manager.nixosModules.home-manager
@@ -60,18 +70,18 @@
       ];
     };
     nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-      pkgs = import inputs.nixpkgs-24-05 { 
-      # pkgs = import inputs.nixpkgs { 
+      pkgs = import inputs.nixpkgs-24-05 {
+        # pkgs = import inputs.nixpkgs {
         system = "aarch64-linux";
         overlays = [ inputs.nix-on-droid.overlays.default ];
       };
       # specialArgs = { inherit inputs; };
-      modules = [ 
+      modules = [
         ./droid/nix-on-droid.nix
         {
           # Set all inputs parameters as special arguments for all submodules,
           # so you can directly use all dependencies in inputs in submodules
-          _module.args = { 
+          _module.args = {
             upkgs = import inputs.nixpkgs { system = "aarch64-linux"; };
           };
         }

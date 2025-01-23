@@ -49,6 +49,25 @@
             command = "nixfmt";
           };
         }
+        {
+          name = "jinja";
+          block-comment-tokens = {
+            start = "<!--";
+            end = "-->";
+          };
+          formatter = {
+            command = "prettier";
+            args = [
+              "--plugin=prettier-plugin-jinja-template"
+              "--parser=jinja-template"
+            ];
+          };
+          # formatter = {
+          #   command = "superhtml";
+          #   args = [ "fmt" ];
+          # };
+          language-servers = [ "superhtml-lsp" ];
+        }
       ];
       language-server = {
         pyright = {
@@ -59,6 +78,10 @@
           config.python.analysis.autoImportCompletions = true;
         };
         typos.command = "typos-lsp";
+        superhtml-lsp = {
+          command = "superhtml";
+          args = [ "lsp" ];
+        };
       };
     };
   };
@@ -69,5 +92,7 @@
     pkgs.typos-lsp
     pkgs.nil
     pkgs.nixfmt-rfc-style
+    pkgs.superhtml
+    pkgs.nodePackages.prettier
   ];
 }

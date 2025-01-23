@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, opkgs, ... }:
 
 {
   imports =
@@ -44,6 +44,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.displayManager.lightdm.enable = false;
 
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
@@ -102,12 +103,12 @@
   ];
   environment.variables.EDITOR = "hx";
   fonts.packages = with pkgs; [
-    noto-fonts
-    # noto-fonts-cjk
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    iosevka
-    font-awesome
+    pkgs.noto-fonts
+    # pkgs.noto-fonts-cjk
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-emoji
+    opkgs.iosevka
+    pkgs.font-awesome
   ];
   programs.light.enable = true;
   programs.nh = {
