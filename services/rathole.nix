@@ -16,6 +16,12 @@ let
 
     [client.services.test_market]
     local_addr = "127.0.0.1:8000"
+
+    [client.services.test_market_mailhog]
+    local_addr = "127.0.0.1:8025"
+
+    [client.services.smtp]
+    local_addr = "0.0.0.0:25"
   '';
 in {
   environment.systemPackages =  [

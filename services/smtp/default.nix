@@ -22,6 +22,6 @@
     # down nginx and opens port 80.
     # certificateScheme = "acme-nginx";
   };
-  security.acme.acceptTerms = true;
-  security.acme.defaults.email = "security@cherezov.xyz";
+  # security.acme.acceptTerms = true;
+  # security.acme.defaults.email = "security@cherezov.xyz";
 }

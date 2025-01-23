@@ -31,6 +31,7 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.wg-quick.interfaces.wg0.configFile = "/home/l1onsun/my/gits/l1onsun/wg1.3op.conf";
 
   # Set your time zone.
   time.timeZone = "Europe/Kaliningrad";
@@ -131,20 +132,6 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
   };
 
-  # programs.niri.package = pkgs.niri-unstable;
-  # programs.niri.enable = true;
-  # programs.niri.settings.input = {
-  #   keyboard = {
-  #     xkb = {
-  #       layout = "us,ru";
-  #       options = "grp:alt_shift_toggle";
-  #     };
-  #   };
-  #   repeat-delay = 180;
-  #   repeat-rate = 30;
-  # };
-  # List services that you want to enable:
-
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -159,17 +146,12 @@
   # Will be exposed through DBus to programs willing to store secrets.
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  # services.caddy = {
-  #   enable = true;
-  #   virtualHosts."chereov.xyz".extraConfig = ''
-  #     respond "Work in progress!"
-  #   '';
-  #   virtualHosts."photo.chereov.xyz".extraConfig = ''
-  #     reverse_proxy http://0.0.0.0:2283
-  #   '';
-  # };
-  networking.firewall.allowedTCPPorts = [ 2283 8017 ];
-
+  networking.firewall.allowedTCPPorts = [
+     2283
+     8017
+     8000 # marketw
+     8025 # marketw
+   ];
 
 
   # TODO: rootless docker
