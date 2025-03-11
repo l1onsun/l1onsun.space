@@ -18,7 +18,7 @@
     chromium
     alacritty
     firefox
-    nyxt
+    # nyxt
     librewolf
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
 

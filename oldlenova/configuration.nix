@@ -102,7 +102,7 @@
     "l1onsun"
   ];
   environment.variables.EDITOR = "hx";
-  fonts.packages = with pkgs; [
+  fonts.packages = [
     pkgs.noto-fonts
     # pkgs.noto-fonts-cjk
     pkgs.noto-fonts-cjk-sans

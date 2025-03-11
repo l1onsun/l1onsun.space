@@ -29,7 +29,8 @@ in {
   ];
 
   systemd.services.rathole-clinet = {
-    enable = true;
+    # enable = true;
+    enable = false;
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
     description = "My rathole client";

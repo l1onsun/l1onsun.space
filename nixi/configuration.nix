@@ -4,7 +4,7 @@
 
 {
   pkgs,
-  inputs,
+  opkgs,
   ...
 }:
 
@@ -112,13 +112,13 @@
     # cachix
   ];
   environment.variables.EDITOR = "hx";
-  fonts.packages = with pkgs; [
-    noto-fonts
-    # noto-fonts-cjk
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    iosevka
-    font-awesome
+  fonts.packages = [
+    pkgs.noto-fonts
+    # pkgs.noto-fonts-cjk
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-emoji
+    opkgs.iosevka
+    pkgs.font-awesome
   ];
   security.polkit.enable = true;
   security.rtkit.enable = true;  # for pulseaudio?? not sure it necessery
