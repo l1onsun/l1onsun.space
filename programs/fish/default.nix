@@ -4,9 +4,10 @@
     enable = true;
     package = pkgs.fish;
     interactiveShellInit = ''
-      starship init fish | source
-      direnv hook fish | source
+      # starship init fish | source
+      # direnv hook fish | source
       zoxide init fish | source
+      # fzf --fish | source
 
       function fish_hybrid_key_bindings --description \
           "Vi-style bindings that inherit emacs-style bindings in all modes"

@@ -8,6 +8,7 @@
         size = font_size;
         # normal.family = "Iosevka Term";
         normal.family = "Iosevka";
+        # normal.family = "Aporetic Sans Mono";
         # draw_bold_text_with_bright_colors = true;
       };
       # scrolling.multiplier = 5;

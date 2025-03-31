@@ -69,6 +69,25 @@
         }
       ];
     };
+    nixosConfigurations.zenbook = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs;
+        opkgs = import inputs.nixpkgs-24-05 {
+          system = "x86_64-linux";
+        };
+      };
+      modules = [
+        ./zenbook/configuration.nix
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hm-backup";
+          home-manager.users.l1onsun = import ./zenbook/home.nix;
+        }
+      ];
+    };
     nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
       pkgs = import inputs.nixpkgs-24-05 {
         # pkgs = import inputs.nixpkgs {
