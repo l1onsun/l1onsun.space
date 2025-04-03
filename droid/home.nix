@@ -12,14 +12,14 @@
   imports = [
     (import ../programs/helix.nix {pkgs = upkgs;})
     (import ../programs/zellij {pkgs = upkgs;})
-    ../programs/direnv.nix
-    ../programs/git.nix
+    (import ../programs/direnv.nix {pkgs = upkgs;})
+    (import ../programs/git.nix {pkgs = upkgs;})
     (import ../programs/fish {pkgs = upkgs;})
     (import ../programs/tmux.nix {pkgs = upkgs;})
   ];
-  programs.direnv.package = upkgs.direnv;
+  # programs.direnv.package = upkgs.direnv;
   # programs.zellij.package = upkgs.zellij;
-  programs.git.package = upkgs.git;
+  # programs.git.package = upkgs.git;
   # programs.tmux.package = upkgs.tmux;
   # Packages that should be installed to the user profile.
   home.packages = with upkgs; [
@@ -28,7 +28,9 @@
     jq # A lightweight and flexible command-line JSON processor
     fzf # A command-line fuzzy finder
     sd
-    ipython
+    # ipython
+    bind
+    inetutils
   ];
 
   # You can update home Manager without changing this value. See

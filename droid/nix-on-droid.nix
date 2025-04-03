@@ -33,6 +33,11 @@
   environment.sessionVariables = {
     EDITOR = "${upkgs.helix}/bin/hx";
   };
+  # networking.extraHosts = "10.18.2.18 gitlab.3opinion.local";
+  environment.etc."resolve.conf".text = lib.mkForce ''
+    nameserver 10.18.2.4
+  '';
+
   terminal.font = "${upkgs.iosevka}/share/fonts/truetype/Iosevka-Regular.ttf";
   terminal.colors = {
     background = "#191724";
