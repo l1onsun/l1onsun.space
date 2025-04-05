@@ -7,10 +7,12 @@
   pkgs,
   modulesPath,
   ...
-}: let  
-  cuda = pkgs.cudaPackages.cudatoolkit; 
-  nvidia = config.boot.kernelPackages.nvidiaPackages.production; 
-in {
+# }: let
+#   cuda = pkgs.cudaPackages.cudatoolkit;
+#   nvidia = config.boot.kernelPackages.nvidiaPackages.production;
+# in {
+}:
+{
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = [
@@ -58,6 +60,9 @@ in {
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-unwrapped"
+
       "nvidia-x11"
       "nvidia-settings"
       "nvidia-persistenced"
@@ -101,8 +106,8 @@ in {
     enable = true;
     enable32Bit = true;
   };
-  environment.systemPackages = [ cuda ];
-  environment.variables.CUDA_PATH = cuda;
-  environment.variables.CUDA_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ cuda nvidia ];
-  environment.variables.EXTRA_LDFLAGS = "-L${nvidia}/lib";
+  # environment.systemPackages = [ cuda ];
+  # environment.variables.CUDA_PATH = cuda;
+  # environment.variables.CUDA_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ cuda nvidia ];
+  # environment.variables.EXTRA_LDFLAGS = "-L${nvidia}/lib";
 }

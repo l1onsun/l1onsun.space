@@ -24,6 +24,10 @@
 
     tuxguitar
     telegram-desktop
+
+    hydralauncher
+    wineWowPackages.waylandFull
+    lutris
   ];
   programs.waybar.enable = true;
 
