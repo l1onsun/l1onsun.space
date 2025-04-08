@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, opkgs, ... }:
 
 {
   home.username = "l1onsun";
@@ -11,28 +11,31 @@
     (import ../programs/alacritty.nix { font_size = 15; })
     (import ../programs/sway.nix { bar_font_size = 12.0; })
     ../programs/ssh.nix
+    ../programs/tome4
   ];
 
-  home.packages = with pkgs; [
-    foot
-    kitty
+  home.packages = [
+    pkgs.foot
+    pkgs.kitty
     # mailhog
-    smartmontools # ???
+    pkgs.smartmontools # ???
 
-    chromium
-    alacritty
-    onlyoffice-bin
+    pkgs.chromium
+    pkgs.alacritty
+    pkgs.onlyoffice-bin
     # nyxt
-    librewolf
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    mako # notification system deveoped by swaywm maintainer
-    fuzzel
+    pkgs.librewolf
+    pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    pkgs.mako # notification system deveoped by swaywm maintainer
+    pkgs.fuzzel
 
-    tuxguitar
-    telegram-desktop
+    pkgs.tuxguitar
+    pkgs.telegram-desktop
+
+    pkgs.steam
+    # opkgs.tome4
   ];
   programs.firefox.enable = true;
-
 
   home.stateVersion = "23.11";
 

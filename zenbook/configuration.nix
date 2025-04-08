@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../services/nix-ld.nix
     ];
 
   # Bootloader.
@@ -44,6 +45,8 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  # services.xserver.desktopManager.xfce.enable = true;
+  # services.displayManager.defaultSession = "xfce";
   services.xserver.displayManager.lightdm.enable = false;
 
   # Enable the GNOME Desktop Environment.
@@ -75,6 +78,7 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+  xdg.portal.wlr.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
