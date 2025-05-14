@@ -34,6 +34,8 @@
 
     pkgs.steam
     # opkgs.tome4
+
+    pkgs.daggerfall-unity
   ];
   programs.firefox.enable = true;
 
