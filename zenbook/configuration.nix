@@ -42,6 +42,9 @@
     LC_TELEPHONE = "ru_RU.UTF-8";
     LC_TIME = "ru_RU.UTF-8";
   };
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -79,6 +82,7 @@
     #media-session.enable = true;
   };
   xdg.portal.wlr.enable = true;
+  xdg.portal.config.common.default = "*";
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -117,11 +121,11 @@
     pkgs.font-awesome
   ];
   programs.light.enable = true;
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-  };
+  # programs.nh = {
+  #   enable = true;
+  #   clean.enable = true;
+  #   clean.extraArgs = "--keep-since 4d --keep 3";
+  # };
 
   virtualisation.docker.enable = true;
   virtualisation.docker.package = pkgs.docker_26;

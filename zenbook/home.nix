@@ -15,6 +15,7 @@
   ];
 
   home.packages = [
+    pkgs.unzip
     pkgs.foot
     pkgs.kitty
     # mailhog
@@ -35,7 +36,11 @@
     pkgs.steam
     # opkgs.tome4
 
+    pkgs.harper
+    # pkgs.busybox
+
     pkgs.daggerfall-unity
+    pkgs.nexusmods-app-unfree
   ];
   programs.firefox.enable = true;
 
