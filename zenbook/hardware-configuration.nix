@@ -58,6 +58,7 @@
       "steam"
       "steam-unwrapped"
       "7zz"
+      "vscode"
     ];
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.graphics = {
