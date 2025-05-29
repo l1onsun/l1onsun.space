@@ -24,6 +24,7 @@
     pkgs.chromium
     pkgs.alacritty
     pkgs.onlyoffice-bin
+    pkgs.vscode
     # nyxt
     pkgs.librewolf
     pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
@@ -41,6 +42,8 @@
 
     pkgs.daggerfall-unity
     pkgs.nexusmods-app-unfree
+
+    pkgs.fheroes2
   ];
   programs.firefox.enable = true;
 

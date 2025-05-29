@@ -17,8 +17,8 @@
         "${modifier}+Shift+Return" = "exec ${pkgs.alacritty} -e fish -C 'my/gits/l1onsun.space/; onefetch'";
         "XF86MonBrightnessDown" = "exec light -U 5";
         "XF86MonBrightnessUp" = "exec light -A 5";
-        "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
-        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+        "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.04+";
+        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.04-";
         "XF86AudioMute" = " exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         "XF86AudioMicMute" = " exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
         "XF86TouchpadToggle" = "input type:touchpad events toggle enabled disabled";
