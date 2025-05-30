@@ -1,4 +1,4 @@
-{ pkgs, opkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "l1onsun";
@@ -12,6 +12,7 @@
     (import ../programs/sway.nix { bar_font_size = 12.0; })
     ../programs/ssh.nix
     ../programs/tome4
+    ../programs/vscode
   ];
 
   home.packages = [
@@ -24,18 +25,6 @@
     pkgs.chromium
     pkgs.alacritty
     pkgs.onlyoffice-bin
-    (pkgs.vscode-with-extensions.override {
-      vscodeExtensions =
-        [ pkgs.vscode-extensions.mvllow.rose-pine ]
-        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          {
-            name = "vscode-helix-emulation";
-            publisher = "jasew";
-            version = "0.6.3";
-            sha256 = "sha256-iHPAFzo1sJI+TMk0pzkuOPw2pTo7g44cZd1EWIifHyM=";
-          }
-        ];
-    })
     pkgs.librewolf
     pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     pkgs.mako # notification system deveoped by swaywm maintainer

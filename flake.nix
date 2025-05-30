@@ -114,5 +114,12 @@
         }
       ];
     };
+
+    templates = {
+      just = {
+        path = ./templates/just;
+        description = "The basic Template";
+      };
+    };
   };
 }
