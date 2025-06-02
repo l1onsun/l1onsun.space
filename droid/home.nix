@@ -17,6 +17,9 @@
     (import ../programs/fish {pkgs = upkgs;})
     (import ../programs/tmux.nix {pkgs = upkgs;})
   ];
+  programs.fish.shellInit = ''
+    set -ga fish_features no-keyboard-protocols
+  '';
   # programs.direnv.package = upkgs.direnv;
   # programs.zellij.package = upkgs.zellij;
   # programs.git.package = upkgs.git;
