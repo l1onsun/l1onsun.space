@@ -5,7 +5,6 @@
   environment.packages = with upkgs; [
     # helix
     # fish
-    git
     openssh
     htop
     bottom

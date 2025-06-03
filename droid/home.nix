@@ -10,16 +10,18 @@
   ];
 
   imports = [
-    (import ../programs/helix.nix {pkgs = upkgs;})
-    (import ../programs/zellij {pkgs = upkgs;})
-    (import ../programs/direnv.nix {pkgs = upkgs;})
-    (import ../programs/git.nix {pkgs = upkgs;})
-    (import ../programs/fish {pkgs = upkgs;})
-    (import ../programs/tmux.nix {pkgs = upkgs;})
+    (import ../programs/helix.nix { pkgs = upkgs; })
+    (import ../programs/zellij { pkgs = upkgs; })
+    (import ../programs/direnv.nix { pkgs = upkgs; })
+    (import ../programs/git.nix { pkgs = upkgs; })
+    (import ../programs/fish { pkgs = upkgs; })
+    (import ../programs/tmux.nix { pkgs = upkgs; })
   ];
   programs.fish.shellInit = ''
     set -ga fish_features no-keyboard-protocols
   '';
+  programs.git.credential.helper = "store";
+  programs.git.credential.credentialStore = null;
   # programs.direnv.package = upkgs.direnv;
   # programs.zellij.package = upkgs.zellij;
   # programs.git.package = upkgs.git;
@@ -44,4 +46,3 @@
   # Let home Manager install and manage itself.
   # programs.home-manager.enable = true;
 }
-
