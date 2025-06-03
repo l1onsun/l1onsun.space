@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Always fail pre-commit hook example
+
+echo "🚫 This pre-commit hook is configured to always fail"
+echo "Purpose: This might be used for testing or to temporarily block commits"
+echo "To commit, either:"
+echo "  1. Remove or modify this hook (.git/hooks/pre-commit)"
+echo "  2. Use 'git commit --no-verify' to bypass hooks"
+
+# Exit with non-zero status to reject the commit
+exit 1

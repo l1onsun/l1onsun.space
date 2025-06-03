@@ -1,12 +1,16 @@
-{ pkgs, ... }: {
-  home.packages = [ pkgs.difftastic ];
+{ pkgs, ... }:
+{
+  home.packages = [
+    pkgs.difftastic
+    pkgs.git-credential-manager
+  ];
   programs.git.package = pkgs.git;
   programs.git = {
     enable = true;
     lfs.enable = true;
     lfs.skipSmudge = true;
-    userName = "Ilya";
-    userEmail = "ilya@cherezov.space";
+    userName = "Ilya Cherezov";
+    userEmail = "cherezov.ia@phystech.edu";
 
     # difftastic.enable = true;
     # config = {
@@ -37,8 +41,11 @@
       pager.difftool = true;
 
       init.defaultBranch = "master";
+
+      credential.helper = "manager";
+      credential.credentialStore = "secretservice";
     };
-    
+
     # };
   };
 }
