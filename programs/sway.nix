@@ -3,7 +3,7 @@
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
-    config = rec {
+    config = {
       modifier = "Mod4";
       terminal = "alacritty"; 
       startup = [
@@ -44,7 +44,7 @@
       };
       input."type:keyboard" = {
         xkb_layout = "us,ru";
-        xkb_options = "grp:alt_shift_toggle";
+        xkb_options = "grp:alt_shift_toggle,caps:swayescape";
         repeat_delay = "180";
         repeat_rate = "30";
       };
