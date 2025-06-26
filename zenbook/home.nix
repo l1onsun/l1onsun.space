@@ -4,6 +4,8 @@
   home.username = "l1onsun";
   home.homeDirectory = "/home/l1onsun";
 
+  home.sessionPath = ["$HOME/.local/bin"];
+
   imports = [
     ../programs/home_essential.nix
     ../programs/home_better.nix
@@ -43,6 +45,10 @@
     pkgs.nexusmods-app-unfree
 
     pkgs.fheroes2
+
+    # pkgs.glow
+    pkgs.marksman
+    pkgs.pipx
   ];
   programs.firefox.enable = true;
 
