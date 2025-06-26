@@ -96,6 +96,31 @@
       ];
     };
 
+    nixosConfigurations.semflashdrive = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs;
+        opkgs = import inputs.nixpkgs-24-05 {
+          system = "x86_64-linux";
+        };
+      };
+      modules = [
+        ./sem_flash_drive/configuration.nix
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager.extraSpecialArgs = {
+            opkgs = import inputs.nixpkgs-24-05 {
+              system = "x86_64-linux";
+            };
+          };
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hm-backup";
+          home-manager.users.reet = import ./sem_flash_drive/home.nix;
+        }
+      ];
+    };
+
     nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
       pkgs = import inputs.nixpkgs-24-05 {
         # pkgs = import inputs.nixpkgs {

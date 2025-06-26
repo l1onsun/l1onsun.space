@@ -3,7 +3,7 @@
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
-    config = rec {
+    config = {
       modifier = "Mod4";
       terminal = "alacritty"; 
       startup = [
