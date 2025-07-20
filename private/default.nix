@@ -1,9 +1,14 @@
-if builtins.pathExists ./private.nix then
-  import ./private.nix
-else
-  { pkgs, ... }: {
-    # modules = {};
-    home.packages = [
-      pkgs.gcc
-    ];
-  }
+let
+  importIfDecrypted =
+    path:
+    let
+      attemptEval = builtins.tryEval (import path);
+    in
+    if attemptEval.success then attemptEval.value else { };
+in
+{ ... }:
+{
+  imports = [
+    (importIfDecrypted ./helix_private.nix)
+  ];
+}
