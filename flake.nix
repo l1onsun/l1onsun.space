@@ -19,12 +19,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # helix.url = "github:helix-editor/helix";
-    # niri.url = "github:sodiboo/niri-flake";
     nixpkgs-24-05.url = "github:NixOS/nixpkgs/nixos-24.05";
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
-      # inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
@@ -84,6 +81,7 @@
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager.extraSpecialArgs = {
+            inherit inputs;
             opkgs = import inputs.nixpkgs-24-05 {
               system = "x86_64-linux";
             };

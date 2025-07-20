@@ -17,6 +17,7 @@
         cursorline = true;
         bufferline = "multiple";
         completion-trigger-len = 1;
+        continue-comments = false;
       };
       editor.whitespace = {
         render = "all";

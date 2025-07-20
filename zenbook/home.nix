@@ -15,6 +15,7 @@
     ../programs/ssh.nix
     ../programs/tome4
     ../programs/vscode
+    ../private
   ];
 
   home.packages = [
@@ -49,6 +50,15 @@
     # pkgs.glow
     pkgs.marksman
     pkgs.pipx
+
+    pkgs.grim
+    pkgs.quickemu
+
+    pkgs.python310
+    pkgs.edir # mv files bulkly using editor
+    pkgs.tea # gitea cli
+    pkgs.git-crypt
+    pkgs.neovim
   ];
   programs.firefox.enable = true;
 

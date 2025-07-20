@@ -2,11 +2,11 @@
 {
   programs.vscode = {
     enable = true;
-    mutableExtensionsDir = false;
+    mutableExtensionsDir = true;
     profiles.default.extensions = [
       pkgs.vscode-extensions.mvllow.rose-pine
       pkgs.vscode-extensions.mkhl.direnv
-      pkgs.vscode-extensions.vscodevim.vim
+      # pkgs.vscode-extensions.vscodevim.vim
       # (pkgs.vscode-utils.buildVscodeExtension {
       #   name = "helix-local";
       #   pname = "helix-local-0.0.1";
