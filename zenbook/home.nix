@@ -59,6 +59,8 @@
     pkgs.tea # gitea cli
     pkgs.git-crypt
     pkgs.neovim
+
+    pkgs.serpl # search and replace tool
   ];
   programs.firefox.enable = true;
 
