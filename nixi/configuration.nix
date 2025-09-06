@@ -156,8 +156,8 @@
 
   # TODO: rootless docker
   virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_26;
-  virtualisation.docker.storageDriver = "btrfs";
+  virtualisation.docker.package = pkgs.docker_28;
+  # virtualisation.docker.storageDriver = "btrfs";
 
 
   # Open ports in the firewall.

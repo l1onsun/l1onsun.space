@@ -10,5 +10,6 @@ in
 {
   imports = [
     (importIfDecrypted ./helix_private.nix)
+    (importIfDecrypted ./aider_env.nix)
   ];
 }

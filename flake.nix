@@ -1,20 +1,21 @@
 {
   description = "A simple NixOS flake";
-  # nixConfig = {
-  #   extra-substituters = [
-  #     # "https://nix-community.cachix.org"
-  #     # "https://helix.cachix.org"
-  #     # "https://niri.cachix.org"
-  #   ];
-  #   extra-trusted-public-keys = [
-  #     # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-  #     # "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-  #     # "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-  #   ];
-  # };
+  nixConfig = {
+    extra-substituters = [
+      # "https://nix-community.cachix.org"
+      "https://helix.cachix.org"
+      # "https://niri.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+      # "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+    ];
+  };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+    helix-flake.url = "github:helix-editor/helix";
   };
 
   outputs = inputs: {
@@ -85,6 +87,7 @@
             opkgs = import inputs.nixpkgs-24-05 {
               system = "x86_64-linux";
             };
+            helix_pkg = inputs.helix-flake.packages."x86_64-linux".default;
           };
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

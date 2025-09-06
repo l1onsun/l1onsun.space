@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, helix_pkg, ... }:
 
 {
   home.username = "l1onsun";
@@ -17,6 +17,7 @@
     ../programs/vscode
     ../private
   ];
+  programs.helix.package = helix_pkg;
 
   home.packages = [
     pkgs.unzip
@@ -50,6 +51,7 @@
     # pkgs.glow
     pkgs.marksman
     pkgs.pipx
+    pkgs.gcc
 
     pkgs.grim
     pkgs.quickemu
@@ -61,6 +63,11 @@
     pkgs.neovim
 
     pkgs.serpl # search and replace tool
+    pkgs.reaper
+    pkgs.musescore
+    pkgs.zoom-us
+
+    pkgs.aider-chat
   ];
   programs.firefox.enable = true;
 

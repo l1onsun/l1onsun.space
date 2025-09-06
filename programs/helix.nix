@@ -2,7 +2,7 @@
 {
   programs.helix = {
     enable = true;
-    package = pkgs.helix;
+    # package = pkgs.helix;
 
     settings = {
       theme = "rose_pine";
