@@ -13,6 +13,7 @@
     (import ../programs/alacritty.nix { font_size = 15; })
     (import ../programs/sway.nix { bar_font_size = 12.0; })
     ../programs/ssh.nix
+    ../programs/aider.nix
     ../programs/tome4
     ../programs/vscode
     ../private
@@ -66,8 +67,6 @@
     pkgs.reaper
     pkgs.musescore
     pkgs.zoom-us
-
-    pkgs.aider-chat
   ];
   programs.firefox.enable = true;
 
