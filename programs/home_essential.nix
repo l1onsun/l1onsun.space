@@ -6,6 +6,7 @@
     ../programs/git.nix
     ../programs/fish
     ../programs/starship.nix
+    ../programs/fzf.nix
   ];
   home.packages = [
     pkgs.bind
@@ -18,9 +19,4 @@
     pkgs.bottom
     pkgs.zoxide
   ];
-  programs.fzf = {
-    enable = true;
-    package = pkgs.fzf;
-    enableFishIntegration = true;
-  };
 }

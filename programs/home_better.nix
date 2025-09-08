@@ -14,8 +14,7 @@
       pkgs.w3m
       pkgs.python313Packages.ipython
       pkgs.tlrc
-      pkgs.fd
-      # pkgs.broot
+      pkgs.broot
     ];
 }
 
