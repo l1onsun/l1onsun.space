@@ -68,6 +68,7 @@
 
   home.packages = [
     pkgs.swaynotificationcenter
+    pkgs.swaykbdd
   ];
 
   services.gammastep = {
