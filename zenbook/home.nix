@@ -67,6 +67,7 @@
     pkgs.reaper
     pkgs.musescore
     pkgs.zoom-us
+    pkgs.woeusb
   ];
   programs.firefox.enable = true;
 
