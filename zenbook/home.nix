@@ -62,6 +62,7 @@
     pkgs.tea # gitea cli
     pkgs.git-crypt
     pkgs.neovim
+    pkgs.kakoune
 
     pkgs.serpl # search and replace tool
     pkgs.reaper
