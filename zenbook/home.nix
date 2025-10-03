@@ -69,6 +69,7 @@
     pkgs.musescore
     pkgs.zoom-us
     pkgs.woeusb
+    pkgs.miraclecast
   ];
   programs.firefox.enable = true;
 
