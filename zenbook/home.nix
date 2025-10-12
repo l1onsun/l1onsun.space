@@ -70,6 +70,7 @@
     pkgs.zoom-us
     pkgs.woeusb
     pkgs.miraclecast
+    pkgs.gephi
   ];
   programs.firefox.enable = true;
 
