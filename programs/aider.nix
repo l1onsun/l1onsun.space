@@ -2,7 +2,7 @@
 {
   home.file.".aider.conf.yml".text = ''
     dark-mode: true
-    auto-commits: false
+    # auto-commits: false
     show-model-warnings: false
     check-update: false
   '';

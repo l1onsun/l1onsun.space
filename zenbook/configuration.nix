@@ -121,6 +121,9 @@
     pkgs.font-awesome
   ];
   programs.light.enable = true;
+  programs.nekoray.enable = true;
+  programs.nekoray.tunMode.enable = true;
+
   # programs.nh = {
   #   enable = true;
   #   clean.enable = true;

@@ -4,7 +4,7 @@
   home.username = "l1onsun";
   home.homeDirectory = "/home/l1onsun";
 
-  home.sessionPath = ["$HOME/.local/bin"];
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   imports = [
     ../programs/home_essential.nix
@@ -69,8 +69,12 @@
     pkgs.musescore
     pkgs.zoom-us
     pkgs.woeusb
+
     pkgs.miraclecast
-    pkgs.gephi
+    # pkgs.gephi  # visualizing graphs
+
+    # pkgs.nekoray
+    pkgs.freetube
   ];
   programs.firefox.enable = true;
 
