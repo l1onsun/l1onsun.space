@@ -130,9 +130,9 @@
   #   clean.extraArgs = "--keep-since 4d --keep 3";
   # };
 
-  # virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
   # virtualisation.docker.package = pkgs.docker_26;
-  # virtualisation.docker.storageDriver = "btrfs";
+  virtualisation.docker.storageDriver = "btrfs";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
