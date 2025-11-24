@@ -75,6 +75,7 @@
 
     # pkgs.nekoray
     pkgs.freetube
+    pkgs.yt-dlp
   ];
   programs.firefox.enable = true;
 
