@@ -11,5 +11,6 @@ in
   imports = [
     (importIfDecrypted ./helix_private.nix)
     (importIfDecrypted ./aider_models.nix)
+    (importIfDecrypted ./git_private.nix)
   ];
 }

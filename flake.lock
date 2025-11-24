@@ -269,6 +269,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-latest": {
+      "locked": {
+        "lastModified": 1763835633,
+        "narHash": "sha256-HzxeGVID5MChuCPESuC0dlQL1/scDKu+MmzoVBJxulM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "050e09e091117c3d7328c7b2b7b577492c43c134",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1756386758,
@@ -362,6 +378,7 @@
         "nix-on-droid": "nix-on-droid",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-24-05": "nixpkgs-24-05",
+        "nixpkgs-latest": "nixpkgs-latest",
         "simple-nixos-mailserver": "simple-nixos-mailserver"
       }
     },

@@ -1,4 +1,4 @@
-{ pkgs, helix_pkg, ... }:
+{ pkgs, helix_pkg, lpkgs, ... }:
 
 {
   home.username = "l1onsun";
@@ -75,7 +75,7 @@
 
     # pkgs.nekoray
     pkgs.freetube
-    pkgs.yt-dlp
+    lpkgs.yt-dlp
   ];
   programs.firefox.enable = true;
 

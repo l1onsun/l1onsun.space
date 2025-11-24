@@ -27,6 +27,7 @@
     };
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
     helix-flake.url = "github:helix-editor/helix";
+    nixpkgs-latest.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs = inputs: {
@@ -88,6 +89,9 @@
               system = "x86_64-linux";
             };
             helix_pkg = inputs.helix-flake.packages."x86_64-linux".default;
+            lpkgs = import inputs.nixpkgs-latest {
+              system = "x86_64-linux";
+            };
           };
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
