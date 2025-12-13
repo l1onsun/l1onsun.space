@@ -133,6 +133,7 @@
   virtualisation.docker.enable = true;
   # virtualisation.docker.package = pkgs.docker_26;
   virtualisation.docker.storageDriver = "btrfs";
+  virtualisation.docker.enableOnBoot= false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
