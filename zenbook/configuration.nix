@@ -69,6 +69,7 @@
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   security.sudo.package = pkgs.sudo.override { withInsults = true; };
+  security.pam.services.swaylock = {};
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -121,8 +122,19 @@
     pkgs.font-awesome
   ];
   programs.light.enable = true;
-  programs.nekoray.enable = true;
-  programs.nekoray.tunMode.enable = true;
+  # programs.nekoray.enable = true;
+  # programs.nekoray.tunMode.enable = true;
+  programs.proxychains = {
+    enable = true;
+    proxies = {
+      socks5_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "127.0.0.1";
+        port = 3737;
+      };
+    };
+  };
 
   # programs.nh = {
   #   enable = true;

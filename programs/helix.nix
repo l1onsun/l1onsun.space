@@ -2,7 +2,6 @@
 {
   programs.helix = {
     enable = true;
-    # package = pkgs.helix;
 
     settings = {
       theme = "rose_pine";
@@ -63,11 +62,11 @@
               "--parser=jinja-template"
             ];
           };
-          # formatter = {
-          #   command = "superhtml";
-          #   args = [ "fmt" ];
-          # };
           language-servers = [ "superhtml-lsp" ];
+        }
+        {
+          name = "markdown";
+          language-servers = [ "lsp-ai" ];
         }
       ];
       language-server = {
@@ -83,6 +82,44 @@
           command = "superhtml";
           args = [ "lsp" ];
         };
+        lsp-ai = {
+          command = "lsp-ai";
+          config.memory.file_store = { };
+          config.models =
+            builtins.mapAttrs
+              (name: model: {
+                type = "open_ai";
+                chat_endpoint = "https://api.vsegpt.ru/v1/chat/completions";
+                auth_token_env_var_name = "VSEGPT_API_KEY";
+                inherit model;
+              })
+              {
+                haiku = "anthropic/claude-haiku-4.5";
+                deepseek-faster = "deepseek/deepseek-v3.2-alt-faster";
+              };
+          config.chat = [
+            {
+              trigger = "!h";
+              action_display_name = "chat haiku";
+              model = "haiku";
+              parameters = {
+                max_context = 200000;
+                max_tokens = 4096;
+                system = "You are a code assistant chatbot";
+              };
+            }
+            {
+              trigger = "!ds";
+              action_display_name = "chat deepseek-faster";
+              model = "deepseek-faster";
+              parameters = {
+                max_context = 162000;
+                max_tokens = 2048;
+                system = "";
+              };
+            }
+          ];
+        };
       };
     };
   };
@@ -94,6 +131,8 @@
     pkgs.nil
     pkgs.nixfmt-rfc-style
     pkgs.superhtml
+    pkgs.vscode-langservers-extracted
     pkgs.nodePackages.prettier
+    pkgs.lsp-ai
   ];
 }

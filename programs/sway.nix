@@ -1,38 +1,47 @@
-{ bar_font_size }: { pkgs, lib, config, ... }:
+{ bar_font_size }:
 {
-  services.swayidle.enable = true;
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
     config = {
       modifier = "Mod4";
-      terminal = "alacritty"; 
+      terminal = "alacritty";
       startup = [
-        {command = "swaync";}
+        { command = "swaync"; }
       ];
-      keybindings = let
-        modifier = config.wayland.windowManager.sway.config.modifier;
-      in lib.mkOptionDefault {
-        "${modifier}+tab" = "workspace back_and_forth";
-        "${modifier}+n" = "exec swaync-client -t -sw";
-        "${modifier}+Shift+Return" = "exec ${pkgs.alacritty} -e fish -C 'my/gits/l1onsun.space/; onefetch'";
-        "XF86MonBrightnessDown" = "exec light -U 5";
-        "XF86MonBrightnessUp" = "exec light -A 5";
-        "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.04+";
-        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.04-";
-        "XF86AudioMute" = " exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-        "XF86AudioMicMute" = " exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-        "XF86TouchpadToggle" = "input type:touchpad events toggle enabled disabled";
-# bindsym XF86AudioPlay exec playerctl play-pause
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
-# bindsym XF86Search exec bemenu-run
-      };
-      bars = [{
-        statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs config-default.toml";
-        position = "top";
-        fonts.size = bar_font_size;
-      }];
+      keybindings =
+        let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in
+        lib.mkOptionDefault {
+          "${modifier}+tab" = "workspace back_and_forth";
+          "${modifier}+n" = "exec swaync-client -t -sw";
+          "${modifier}+Shift+Return" = "exec ${pkgs.alacritty} -e fish -C 'my/gits/l1onsun.space/; onefetch'";
+          "XF86MonBrightnessDown" = "exec light -U 5";
+          "XF86MonBrightnessUp" = "exec light -A 5";
+          "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.04+";
+          "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.04-";
+          "XF86AudioMute" = " exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioMicMute" = " exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          "XF86TouchpadToggle" = "input type:touchpad events toggle enabled disabled";
+          # bindsym XF86AudioPlay exec playerctl play-pause
+          # bindsym XF86AudioNext exec playerctl next
+          # bindsym XF86AudioPrev exec playerctl previous
+          # bindsym XF86Search exec bemenu-run
+        };
+      bars = [
+        {
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs config-default.toml";
+          position = "top";
+          fonts.size = bar_font_size;
+        }
+      ];
       input."type:touchpad" = {
         accel_profile = "flat";
         tap = "enabled";
@@ -124,5 +133,53 @@
       ];
     };
   };
-}
 
+  services.swayidle =
+    let
+      # lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
+      lock = "${pkgs.swaylock}/bin/swaylock";
+      display = status: "${pkgs.sway}/bin/swaymsg 'output * power ${status}'";
+    in
+    {
+      enable = false;
+      timeouts = [
+        {
+          timeout = 15; # in seconds
+          command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
+        }
+        {
+          timeout = 20;
+          command = lock;
+        }
+        {
+          timeout = 25;
+          command = display "off";
+          resumeCommand = display "on";
+        }
+        {
+          timeout = 30;
+          command = "${pkgs.systemd}/bin/systemctl suspend";
+        }
+      ];
+      events = [
+        {
+          event = "before-sleep";
+          # adding duplicated entries for the same event may not work
+          command = (display "off") + "; " + lock;
+        }
+        {
+          event = "after-resume";
+          command = display "on";
+        }
+        {
+          event = "lock";
+          command = (display "off") + "; " + lock;
+        }
+        {
+          event = "unlock";
+          command = display "on";
+        }
+      ];
+    };
+  programs.swaylock.enable = true;
+}
