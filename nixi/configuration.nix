@@ -17,8 +17,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../services/nix-ld.nix
-    ../services/rathole.nix
-    ../services/smtp
+    # ../services/rathole.nix
+    # ../services/smtp
   ];
 
   # Use the systemd-boot EFI boot loader.

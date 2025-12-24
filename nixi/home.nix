@@ -13,6 +13,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    qbittorrent
     smartmontools
 
     chromium
@@ -28,6 +29,11 @@
     hydralauncher
     wineWowPackages.waylandFull
     lutris
+
+    steam
+    daggerfall-unity
+
+    git-crypt
   ];
   programs.waybar.enable = true;
 

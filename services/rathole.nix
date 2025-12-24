@@ -3,7 +3,7 @@ let
   ratholeConfig = pkgs.writeText "rathole_client.toml" ''
     [client]
     remote_addr = "176.124.192.235:2340"
-    default_token = "use_a_secret_that_anyone_knows"
+    default_token = "dsjfklajgaeglajjgeklj;"
 
     [client.services.nas_ssh]
     local_addr = "127.0.0.1:22"
@@ -29,8 +29,8 @@ in {
   ];
 
   systemd.services.rathole-clinet = {
-    # enable = true;
-    enable = false;
+    enable = true;
+    # enable = false;
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
     description = "My rathole client";
