@@ -31,7 +31,6 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.wg-quick.interfaces.wg0.configFile = "/home/l1onsun/my/gits/l1onsun/wg1.3op.conf";
 
   # Set your time zone.
   time.timeZone = "Europe/Kaliningrad";
@@ -155,8 +154,8 @@
 
 
   # TODO: rootless docker
-  virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_28;
+  # virtualisation.docker.enable = true;
+  # virtualisation.docker.package = pkgs.docker_28;
   # virtualisation.docker.storageDriver = "btrfs";
 
 

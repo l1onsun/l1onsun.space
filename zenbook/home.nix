@@ -31,6 +31,7 @@
     pkgs.alacritty
     pkgs.onlyoffice-bin
     pkgs.librewolf
+    pkgs.qutebrowser
     pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     pkgs.mako # notification system deveoped by swaywm maintainer
     pkgs.fuzzel

@@ -12,28 +12,28 @@
   ];
 
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [
-    qbittorrent
-    smartmontools
-
-    chromium
-    alacritty
-    firefox
-    # nyxt
-    librewolf
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-
-    tuxguitar
-    telegram-desktop
-
-    hydralauncher
-    wineWowPackages.waylandFull
-    lutris
-
-    steam
-    daggerfall-unity
-
-    git-crypt
+  home.packages = [
+    pkgs.qbittorrent
+    pkgs.smartmontools
+    
+    pkgs.chromium
+    pkgs.alacritty
+    pkgs.firefox
+    pkgs.qutebrowser
+    
+    pkgs.librewolf
+    pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    pkgs.tuxguitar
+    pkgs.telegram-desktop
+    
+    pkgs.hydralauncher
+    pkgs.wineWowPackages.waylandFull
+    pkgs.lutris
+    
+    pkgs.steam
+    pkgs.daggerfall-unity
+    
+    pkgs.git-crypt
   ];
   programs.waybar.enable = true;
 
