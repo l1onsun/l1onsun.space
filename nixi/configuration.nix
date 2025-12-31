@@ -139,6 +139,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   # Enable the gnome-keyring secrets vault. 
+  services.gnome.gnome-keyring.enable = true;
   # Will be exposed through DBus to programs willing to store secrets.
   services.xserver.videoDrivers = [ "nvidia" ];
 

@@ -3,6 +3,7 @@
   home.packages = [
     pkgs.difftastic
     pkgs.git-credential-manager
+    pkgs.xdg-utils
   ];
   programs.git.package = pkgs.git;
   programs.git = {

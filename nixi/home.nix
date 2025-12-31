@@ -9,6 +9,7 @@
     ../programs/home_better.nix
     (import ../programs/alacritty.nix { font_size = 18; })
     (import ../programs/sway.nix { bar_font_size = 14.0; })
+    ../private
   ];
 
   # Packages that should be installed to the user profile.
@@ -18,7 +19,6 @@
     
     pkgs.chromium
     pkgs.alacritty
-    pkgs.firefox
     pkgs.qutebrowser
     
     pkgs.librewolf
@@ -34,8 +34,10 @@
     pkgs.daggerfall-unity
     
     pkgs.git-crypt
+    pkgs.pipx
   ];
   programs.waybar.enable = true;
+  programs.firefox.enable = true;
 
 
   # This value determines the home Manager release that your
