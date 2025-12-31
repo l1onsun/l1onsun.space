@@ -17,9 +17,12 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../services/nix-ld.nix
-    # ../services/rathole.nix
+    ../services/rathole.nix
+    ../crypt/nixos.nix
     # ../services/smtp
   ];
+  services.myRathole.enable = true;
+
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -152,9 +155,9 @@
 
 
   # TODO: rootless docker
-  # virtualisation.docker.enable = true;
-  # virtualisation.docker.package = pkgs.docker_28;
-  # virtualisation.docker.storageDriver = "btrfs";
+  virtualisation.docker.enable = true;
+  virtualisation.docker.package = pkgs.docker_28;
+  virtualisation.docker.storageDriver = "btrfs";
 
 
   # Open ports in the firewall.

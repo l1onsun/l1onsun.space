@@ -3,3 +3,5 @@
 
 crypt/** filter=git-crypt diff=git-crypt
 crypt/default.nix !filter !diff
+crypt/home.nix !filter !diff
+crypt/nixos.nix !filter !diff
