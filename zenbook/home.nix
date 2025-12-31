@@ -16,7 +16,7 @@
     ../programs/aider.nix
     ../programs/tome4
     ../programs/vscode
-    ../private
+    ../crypt
   ];
   programs.helix.package = helix_pkg;
 

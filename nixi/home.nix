@@ -9,7 +9,7 @@
     ../programs/home_better.nix
     (import ../programs/alacritty.nix { font_size = 18; })
     (import ../programs/sway.nix { bar_font_size = 14.0; })
-    ../private
+    ../crypt
   ];
 
   # Packages that should be installed to the user profile.
