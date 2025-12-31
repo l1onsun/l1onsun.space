@@ -25,6 +25,7 @@
       sw = "checkout -";
       rsw = "restore --staged --worktree";
       dft = "difftool";
+      stash-diff = "stash show -p stash@{0}";
     };
     extraConfig = {
       # filter.lfs = {
