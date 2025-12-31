@@ -72,7 +72,7 @@
       "sudo"
       "video"
       "docker"
-    ]; # Enable ‘sudo’ for the user.
+    ];
     shell = pkgs.fish;
   };
 
@@ -84,17 +84,14 @@
     "root"
     "l1onsun"
   ];
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  
   environment.systemPackages = with pkgs; [
-    tmux
     fish
     starship
     helix
     bat
     tree
     killall
-    # inputs.helix.packages."x86_64-linux".default
     broot
     yazi
     ueberzugpp

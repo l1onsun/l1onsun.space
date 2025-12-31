@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.helix = {
     enable = true;
@@ -25,6 +25,19 @@
       };
       editor.cursor-shape.insert = "bar";
       keys.normal.space.i = ":toggle lsp.display-inlay-hints";
+      keys.insert.esc =
+        let
+          to-eng-layout = pkgs.writeShellScriptBin "toEngLayout" ''
+            if ! command -v swaymsg >/dev/null; then
+                exit 0
+            fi
+            swaymsg input "type:keyboard" xkb_switch_layout 0 > /dev/null 2>&1
+          '';
+        in
+        [
+          "normal_mode"
+          ":run-shell-command ${lib.getExe to-eng-layout}"
+        ];
     };
 
     languages = {
@@ -96,6 +109,7 @@
               {
                 haiku = "anthropic/claude-haiku-4.5";
                 deepseek-faster = "deepseek/deepseek-v3.2-alt-faster";
+                mercury-coder = "inception/mercury-coder";
               };
           config.chat = [
             {
@@ -117,6 +131,12 @@
                 max_tokens = 2048;
                 system = "";
               };
+            }
+            {
+              trigger = "!m";
+              action_display_name = "chat inception/mercury-coder";
+              model = "mercury-coder";
+              parameters.max_tokens = 2048;
             }
           ];
         };

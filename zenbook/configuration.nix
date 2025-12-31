@@ -135,6 +135,8 @@
       };
     };
   };
+  # services.v2raya.enable = true;
+  # services.resolved.enable = true;
 
   # programs.nh = {
   #   enable = true;
