@@ -18,8 +18,9 @@
     ./hardware-configuration.nix
     ../services/nix-ld.nix
     ../services/rathole.nix
-    ../crypt/nixos.nix
     # ../services/smtp
+    ../services/ddcutil.nix
+    ../crypt/nixos.nix
   ];
   services.myRathole.enable = true;
 
