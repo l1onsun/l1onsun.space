@@ -16,6 +16,7 @@
     ../programs/aider.nix
     ../programs/tome4
     ../programs/vscode
+    ../programs/qutebrowser.nix
     ../crypt
   ];
   programs.helix.package = helix_pkg;
@@ -31,7 +32,6 @@
     pkgs.alacritty
     pkgs.onlyoffice-bin
     pkgs.librewolf
-    pkgs.qutebrowser
     pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     pkgs.mako # notification system deveoped by swaywm maintainer
     pkgs.fuzzel

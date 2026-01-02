@@ -9,6 +9,7 @@
     ../programs/home_better.nix
     (import ../programs/alacritty.nix { font_size = 18; })
     (import ../programs/sway.nix { bar_font_size = 14.0; })
+    ../programs/qutebrowser.nix
     ../crypt
   ];
 
