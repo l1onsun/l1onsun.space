@@ -30,101 +30,112 @@
     nixpkgs-latest.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = inputs: {
-    nixosConfigurations.nixi = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
-        opkgs = import inputs.nixpkgs-24-05 {
+  outputs =
+    inputs:
+    let
+      x86NixosSystem =
+        { configurationPath, homePath }:
+        let
           system = "x86_64-linux";
-        };
-      };
-      modules = [
-        ./nixi/configuration.nix
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hm-backup";
-          home-manager.users.l1onsun = import ./nixi/home.nix;
-        }
-      ];
-    };
-
-    nixosConfigurations.oldlenova = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
-        opkgs = import inputs.nixpkgs-24-05 {
-          system = "x86_64-linux";
-        };
-      };
-      modules = [
-        ./oldlenova/configuration.nix
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hm-backup";
-          home-manager.users.l1onsun = import ./oldlenova/home.nix;
-        }
-      ];
-    };
-
-    nixosConfigurations.zenbook = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
-        opkgs = import inputs.nixpkgs-24-05 {
-          system = "x86_64-linux";
-        };
-      };
-      modules = [
-        ./zenbook/configuration.nix
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager.extraSpecialArgs = {
+        in
+        inputs.nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
             inherit inputs;
-            opkgs = import inputs.nixpkgs-24-05 {
-              system = "x86_64-linux";
-            };
-            helix_pkg = inputs.helix-flake.packages."x86_64-linux".default;
-            lpkgs = import inputs.nixpkgs-latest {
-              system = "x86_64-linux";
-            };
+            opkgs = import inputs.nixpkgs-24-05 { inherit system; };
           };
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hm-backup";
-          home-manager.users.l1onsun = import ./zenbook/home.nix;
-        }
-      ];
-    };
-
-    nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-      pkgs = import inputs.nixpkgs-24-05 {
-        # pkgs = import inputs.nixpkgs {
-        system = "aarch64-linux";
-        overlays = [ inputs.nix-on-droid.overlays.default ];
+          modules = [
+            configurationPath
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "hm-backup";
+              home-manager.users.l1onsun = import homePath;
+            }
+          ];
+        };
+    in
+    {
+      nixosConfigurations.nixi = x86NixosSystem {
+        configurationPath = ./nixi/configuration.nix;
+        homePath = ./nixi/home.nix;
       };
-      # specialArgs = { inherit inputs; };
-      modules = [
-        ./droid/nix-on-droid.nix
-        {
-          # Set all inputs parameters as special arguments for all submodules,
-          # so you can directly use all dependencies in inputs in submodules
-          _module.args = {
-            upkgs = import inputs.nixpkgs { system = "aarch64-linux"; };
+
+      nixosConfigurations.oldlenova = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          opkgs = import inputs.nixpkgs-24-05 {
+            system = "x86_64-linux";
           };
-        }
-      ];
-    };
+        };
+        modules = [
+          ./oldlenova/configuration.nix
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "hm-backup";
+            home-manager.users.l1onsun = import ./oldlenova/home.nix;
+          }
+        ];
+      };
 
-    templates = {
-      just = {
-        path = ./templates/just;
-        description = "The basic Template";
+      nixosConfigurations.zenbook = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          opkgs = import inputs.nixpkgs-24-05 {
+            system = "x86_64-linux";
+          };
+        };
+        modules = [
+          ./zenbook/configuration.nix
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              opkgs = import inputs.nixpkgs-24-05 {
+                system = "x86_64-linux";
+              };
+              helix_pkg = inputs.helix-flake.packages."x86_64-linux".default;
+              lpkgs = import inputs.nixpkgs-latest {
+                system = "x86_64-linux";
+              };
+            };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "hm-backup";
+            home-manager.users.l1onsun = import ./zenbook/home.nix;
+          }
+        ];
+      };
+
+      nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import inputs.nixpkgs-24-05 {
+          # pkgs = import inputs.nixpkgs {
+          system = "aarch64-linux";
+          overlays = [ inputs.nix-on-droid.overlays.default ];
+        };
+        # specialArgs = { inherit inputs; };
+        modules = [
+          ./droid/nix-on-droid.nix
+          {
+            # Set all inputs parameters as special arguments for all submodules,
+            # so you can directly use all dependencies in inputs in submodules
+            _module.args = {
+              upkgs = import inputs.nixpkgs { system = "aarch64-linux"; };
+            };
+          }
+        ];
+      };
+
+      templates = {
+        just = {
+          path = ./templates/just;
+          description = "The basic Template";
+        };
       };
     };
-  };
 }
