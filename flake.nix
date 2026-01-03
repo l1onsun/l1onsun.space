@@ -42,12 +42,18 @@
           inherit system;
           specialArgs = {
             inherit inputs;
-            opkgs = import inputs.nixpkgs-24-05 { inherit system; };
+            opkgs = import inputs.nixpkgs-24-05 { inherit system; }; # iosevka
           };
           modules = [
             configurationPath
             inputs.home-manager.nixosModules.home-manager
             {
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                opkgs = import inputs.nixpkgs-24-05 { inherit system; };
+                helix_pkg = inputs.helix-flake.packages.${system}.default;
+                lpkgs = import inputs.nixpkgs-latest { inherit system; };
+              };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "hm-backup";
@@ -62,54 +68,14 @@
         homePath = ./nixi/home.nix;
       };
 
-      nixosConfigurations.oldlenova = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          opkgs = import inputs.nixpkgs-24-05 {
-            system = "x86_64-linux";
-          };
-        };
-        modules = [
-          ./oldlenova/configuration.nix
-          inputs.home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "hm-backup";
-            home-manager.users.l1onsun = import ./oldlenova/home.nix;
-          }
-        ];
+      nixosConfigurations.oldlenova = x86NixosSystem {
+        configurationPath = ./oldlenova/configuration.nix;
+        homePath = ./oldlenova/home.nix;
       };
 
-      nixosConfigurations.zenbook = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          opkgs = import inputs.nixpkgs-24-05 {
-            system = "x86_64-linux";
-          };
-        };
-        modules = [
-          ./zenbook/configuration.nix
-          inputs.home-manager.nixosModules.home-manager
-          {
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              opkgs = import inputs.nixpkgs-24-05 {
-                system = "x86_64-linux";
-              };
-              helix_pkg = inputs.helix-flake.packages."x86_64-linux".default;
-              lpkgs = import inputs.nixpkgs-latest {
-                system = "x86_64-linux";
-              };
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "hm-backup";
-            home-manager.users.l1onsun = import ./zenbook/home.nix;
-          }
-        ];
+      nixosConfigurations.zenbook = x86NixosSystem {
+        configurationPath = ./zenbook/configuration.nix;
+        homePath = ./zenbook/home.nix;
       };
 
       nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
