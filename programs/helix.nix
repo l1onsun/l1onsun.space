@@ -102,13 +102,14 @@
             builtins.mapAttrs
               (name: model: {
                 type = "open_ai";
-                chat_endpoint = "https://api.vsegpt.ru/v1/chat/completions";
-                auth_token_env_var_name = "VSEGPT_API_KEY";
+                chat_endpoint = "https://api.polza.ai/v1/chat/completions";
+                auth_token_env_var_name = "POLZA_API_KEY";
                 inherit model;
               })
               {
                 haiku = "anthropic/claude-haiku-4.5";
-                deepseek-faster = "deepseek/deepseek-v3.2-alt-faster";
+                # deepseek-faster = "deepseek/deepseek-v3.2-alt-faster";
+                deepseek = "deepseek/deepseek-v3.2";
                 mercury-coder = "inception/mercury-coder";
               };
           config.chat = [
@@ -125,7 +126,7 @@
             {
               trigger = "!ds";
               action_display_name = "chat deepseek-faster";
-              model = "deepseek-faster";
+              model = "deepseek";
               parameters = {
                 max_context = 162000;
                 max_tokens = 2048;
