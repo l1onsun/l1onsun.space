@@ -108,9 +108,9 @@
               })
               {
                 haiku = "anthropic/claude-haiku-4.5";
-                # deepseek-faster = "deepseek/deepseek-v3.2-alt-faster";
                 deepseek = "deepseek/deepseek-v3.2";
                 mercury-coder = "inception/mercury-coder";
+                gpt52 = "openai/gpt-5.2";
               };
           config.chat = [
             {
@@ -138,6 +138,12 @@
               action_display_name = "chat inception/mercury-coder";
               model = "mercury-coder";
               parameters.max_tokens = 2048;
+            }
+            {
+              trigger = "!gpt";
+              action_display_name = "chat openai/gpt-5.2";
+              model = "gpt52";
+              parameters.max_tokens = 1024;
             }
           ];
         };
