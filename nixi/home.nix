@@ -11,6 +11,7 @@
     (import ../programs/sway.nix { bar_font_size = 14.0; })
     ../programs/qutebrowser.nix
     ../crypt
+    ../programs/codex.nix
   ];
 
   # Packages that should be installed to the user profile.
@@ -36,6 +37,8 @@
     
     pkgs.git-crypt
     pkgs.pipx
+
+    pkgs.codex
   ];
   programs.waybar.enable = true;
   programs.firefox.enable = true;
