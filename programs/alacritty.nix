@@ -1,4 +1,5 @@
-{ font_size }: {
+{ font_size }:
+{
   programs.alacritty = {
     enable = true;
     # custom settings
@@ -13,6 +14,31 @@
       };
       # scrolling.multiplier = 5;
       # selection.save_to_clipboard = true;
+      hints.enabled = [
+        {
+          regex = "(?P<hint>[^\s:]+:\d+:\d+)";
+          mouse.enabled = true;
+          action = "Paste";
+          binding = {
+            key = "Y";
+            mods = "Control|Shift";
+          };
+        }
+        {
+          # default
+          command = "xdg-open";
+          hyperlinks = true;
+          post_processing = true;
+          persist = false;
+          mouse.enabled = true;
+          action = "Copy";
+          binding = {
+            key = "O";
+            mods = "Control|Shift";
+          };
+          regex = ''(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>"\\s{-}\\^⟨⟩`\\\\]+'';
+        }
+      ];
       colors = {
         primary = {
           foreground = "#e0def4";
