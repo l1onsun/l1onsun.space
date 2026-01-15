@@ -13,8 +13,9 @@
       pkgs.yazi
       pkgs.w3m
       pkgs.python313Packages.ipython
-      pkgs.tlrc
+      pkgs.tlrc  # tldr
       pkgs.broot
+      pkgs.inetutils  # telnet +
     ];
 }
 

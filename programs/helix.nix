@@ -143,7 +143,8 @@
               trigger = "!gpt";
               action_display_name = "chat openai/gpt-5.2";
               model = "gpt52";
-              parameters.max_tokens = 1024;
+              parameters.max_completion_tokens = 4096;
+              parameters.max_tokens = 4096;
             }
           ];
         };
