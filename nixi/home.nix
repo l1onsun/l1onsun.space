@@ -12,7 +12,7 @@
     (import ../programs/sway.nix { bar_font_size = 14.0; })
     ../programs/qutebrowser.nix
     ../crypt
-    # ../programs/codex.nix
+    ../programs/aichat.nix
     ../programs/niri
   ];
 
@@ -40,9 +40,6 @@
     
     pkgs.git-crypt
     pkgs.pipx
-
-    pkgs.codex
-
   ];
   programs.waybar.enable = true;
   programs.firefox.enable = true;

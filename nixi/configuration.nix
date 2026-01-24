@@ -145,6 +145,8 @@
   # Enable the gnome-keyring secrets vault. 
   services.gnome.gnome-keyring.enable = true;
   # Will be exposed through DBus to programs willing to store secrets.
+  programs.niri.enable = true;
+  programs.niri.useNautilus = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
   networking.firewall.allowedTCPPorts = [
