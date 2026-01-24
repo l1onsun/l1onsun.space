@@ -116,7 +116,7 @@
     pkgs.noto-fonts
     # pkgs.noto-fonts-cjk
     pkgs.noto-fonts-cjk-sans
-    pkgs.noto-fonts-emoji
+    pkgs.noto-fonts-color-emoji
     opkgs.iosevka
     pkgs.font-awesome
   ];

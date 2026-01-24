@@ -3,6 +3,7 @@
 {
   home.username = "l1onsun";
   home.homeDirectory = "/home/l1onsun";
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   imports = [
     ../programs/home_essential.nix
@@ -11,7 +12,8 @@
     (import ../programs/sway.nix { bar_font_size = 14.0; })
     ../programs/qutebrowser.nix
     ../crypt
-    ../programs/codex.nix
+    # ../programs/codex.nix
+    ../programs/niri
   ];
 
   # Packages that should be installed to the user profile.
@@ -34,11 +36,13 @@
     
     pkgs.steam
     pkgs.daggerfall-unity
+    pkgs.gamescope
     
     pkgs.git-crypt
     pkgs.pipx
 
     pkgs.codex
+
   ];
   programs.waybar.enable = true;
   programs.firefox.enable = true;
