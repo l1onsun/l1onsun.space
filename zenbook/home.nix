@@ -30,7 +30,7 @@
 
     pkgs.chromium
     pkgs.alacritty
-    pkgs.onlyoffice-bin
+    pkgs.onlyoffice-desktopeditors
     pkgs.librewolf
     pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     pkgs.mako # notification system deveoped by swaywm maintainer
@@ -46,7 +46,7 @@
     # pkgs.busybox
 
     pkgs.daggerfall-unity
-    pkgs.nexusmods-app-unfree
+    # pkgs.nexusmods-app-unfree
 
     pkgs.fheroes2
 
@@ -66,7 +66,7 @@
     pkgs.kakoune
 
     pkgs.serpl # search and replace tool
-    pkgs.reaper
+    # pkgs.reaper
     pkgs.musescore
     pkgs.zoom-us
     pkgs.woeusb
@@ -77,8 +77,11 @@
     # pkgs.nekoray
     pkgs.freetube
     lpkgs.yt-dlp
+    pkgs.folo
 
     pkgs.p7zip
+    pkgs.audacity
+
   ];
   programs.firefox.enable = true;
 

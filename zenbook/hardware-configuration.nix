@@ -67,7 +67,7 @@
       "7zz"
       "vscode"
       "vscode-with-extensions"
-      "reaper"
+      # "reaper"
       "zoom"
     ];
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
