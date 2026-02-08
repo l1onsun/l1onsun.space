@@ -84,6 +84,8 @@
 
   ];
   programs.firefox.enable = true;
+  # programs.navi.enable = true;
+  # programs.navi.enableFishIntegration = true;
 
   home.stateVersion = "23.11";
 

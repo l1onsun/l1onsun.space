@@ -24,8 +24,7 @@
         characters.space = " ";
       };
       editor.cursor-shape.insert = "bar";
-      keys.normal.space.i = ":toggle lsp.display-inlay-hints";
-      keys.insert.esc =
+      keys =
         let
           to-eng-layout = pkgs.writeShellScriptBin "toEngLayout" ''
             if ! command -v swaymsg >/dev/null; then
@@ -33,11 +32,18 @@
             fi
             swaymsg input "type:keyboard" xkb_switch_layout 0 > /dev/null 2>&1
           '';
+          to-normal-and-eng = [
+            "normal_mode"
+            ":run-shell-command ${lib.getExe to-eng-layout}"
+          ];
         in
-        [
-          "normal_mode"
-          ":run-shell-command ${lib.getExe to-eng-layout}"
-        ];
+        {
+          insert.esc = to-normal-and-eng;
+          normal.esc = to-normal-and-eng;
+          select.esc = to-normal-and-eng;
+
+          normal.space.i = ":toggle lsp.display-inlay-hints";
+        };
     };
 
     languages = {
