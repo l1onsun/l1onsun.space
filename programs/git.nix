@@ -20,6 +20,7 @@
       ll = "log --oneline -n 10";
       cm = "commit -m";
       ca = "commit --amend";
+      cma = "commit --amend";
       d = "diff --name-only --diff-filter=d";
       ch = "checkout";
       sw = "checkout -";

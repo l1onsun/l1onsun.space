@@ -32,9 +32,6 @@
             - name: z-ai/glm-5
               max_tokens: 8192
 
-            - name: z-ai/glm-5
-              max_tokens: 8192
-
       model: polza-ai:deepseek/deepseek-v3.2
     '';
   };

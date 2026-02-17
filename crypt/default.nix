@@ -12,5 +12,6 @@ in
     (importIfDecrypted ./helix_private.nix)
     (importIfDecrypted ./ai_models.nix)
     (importIfDecrypted ./git_private.nix)
+    (importIfDecrypted ./ssh_private.nix)
   ];
 }
