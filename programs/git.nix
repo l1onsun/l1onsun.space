@@ -27,6 +27,7 @@
       rsw = "restore --staged --worktree";
       dft = "difftool";
       stash-diff = "stash show -p stash@{0}";
+      ignore = "ls-files --others --exclude-standard --directory";
     };
     extraConfig = {
       # filter.lfs = {

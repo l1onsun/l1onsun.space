@@ -24,15 +24,11 @@
           api_key: ${config.programs.polza_aichat.apiKey}
           models:
             - name: openai/gpt-5.2
-              max_tokens: 8192
-
             - name: deepseek/deepseek-v3.2
-              max_tokens: 8192
-
             - name: z-ai/glm-5
-              max_tokens: 8192
 
       model: polza-ai:deepseek/deepseek-v3.2
     '';
   };
 }
+              # max_tokens: 8192
