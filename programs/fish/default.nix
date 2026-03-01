@@ -20,6 +20,9 @@
           end
       end
       set -g fish_key_bindings fish_hybrid_key_bindings
+
+      # workaround: should be removed in next update
+      set -p fish_complete_path ${pkgs.fish}/share/fish/completions
     '';
     shellAbbrs = {
       gp = "git push";
