@@ -17,6 +17,7 @@
     ../programs/tome4
     ../programs/vscode
     ../programs/qutebrowser.nix
+    ../programs/scripts.nix
     ../crypt
   ];
   programs.helix.package = helix_pkg;
@@ -82,6 +83,7 @@
     pkgs.p7zip
     pkgs.audacity
 
+    pkgs.pinta
   ];
   programs.firefox.enable = true;
   # programs.navi.enable = true;
