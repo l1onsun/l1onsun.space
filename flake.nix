@@ -103,5 +103,7 @@
           description = "The basic Template";
         };
       };
+
+      devShells = (import ./devshell.nix inputs.nixpkgs);
     };
 }

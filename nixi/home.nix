@@ -13,6 +13,7 @@
     ../programs/qutebrowser.nix
     ../crypt
     ../programs/aichat.nix
+    ../programs/scripts.nix
     ../programs/niri
   ];
 
@@ -40,6 +41,8 @@
     
     pkgs.git-crypt
     pkgs.pipx
+
+    pkgs.pinta
   ];
   programs.waybar.enable = true;
   programs.firefox.enable = true;
