@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/sshilovsky/fish-helix.git
+	branch = main
+	commit = d2de6d1f2b03bd35869b1427e727f91612485194
+	parent = 8add5302fd5efdd5bf69210db50277a316f4ee2a
+	method = merge
+	cmdver = 0.4.9
