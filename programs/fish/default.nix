@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.starship.enable = true;
   programs.fish = {
     enable = true;
@@ -11,7 +12,8 @@
           for mode in default insert visual
               fish_default_key_bindings -M $mode
           end
-          fish_vi_key_bindings --no-erase
+          # fish_vi_key_bindings --no-erase
+          fish_helix_key_bindings --no-erase
           for mode in default insert visual
               bind -M $mode \ej history-token-search-forward
               bind -M $mode \ek history-token-search-backward
@@ -38,6 +40,19 @@
       pss = "sudo pacman -Syu";
       py = "python";
     };
+    plugins = [
+      {
+        name = "fish-helix";
+        src = pkgs.stdenv.mkDerivation {
+          name = "fish-helix-drv";
+          src = ../../vendor/fish-helix/functions;
+          installPhase = ''
+            mkdir -p $out/functions
+            cp $src/*.fish $out/functions/
+          '';
+        };
+      }
+    ];
   };
   home.packages = [
     pkgs.gawk
