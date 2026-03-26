@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lpkgs, ... }:
 
 {
   home.username = "l1onsun";
@@ -43,6 +43,9 @@
     pkgs.pipx
 
     pkgs.pinta
+    pkgs.clang  # TODO: remove
+
+    lpkgs.opencode
   ];
   programs.waybar.enable = true;
   programs.firefox.enable = true;
