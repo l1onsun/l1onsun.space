@@ -84,6 +84,10 @@
     pkgs.audacity
 
     pkgs.pinta
+
+    pkgs.gping
+
+    pkgs.ueberzugpp
   ];
   programs.firefox.enable = true;
   # programs.navi.enable = true;

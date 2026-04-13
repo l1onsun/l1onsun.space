@@ -20,5 +20,16 @@
       SRC="$1"
       ${lib.getExe pkgs.rsync} -avzP --exclude='.git' "$SRC/" .
     '')
+
+    (pkgs.writeShellScriptBin "rsy" ''
+      if [ $# -ne 2 ]; then
+        echo "Usage: rsync user@host:/path/to/source /local/destination"
+        exit 1
+      fi
+
+      SRC="$1"
+      DST="$2"
+      ${lib.getExe pkgs.rsync} -avzP --exclude='.git' "$SRC" "$DST"
+    '')
   ];
 }

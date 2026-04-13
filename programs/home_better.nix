@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
     imports = [
       ../programs/direnv.nix
@@ -15,7 +15,8 @@
       pkgs.python313Packages.ipython
       pkgs.tlrc  # tldr
       pkgs.broot
-      pkgs.inetutils  # telnet +
+      (lib.lowPrio pkgs.inetutils)  # telnet +
+      pkgs.iputils  # ping
     ];
 }
 
