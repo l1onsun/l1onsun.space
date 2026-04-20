@@ -52,7 +52,10 @@
                 inherit inputs;
                 opkgs = import inputs.nixpkgs-24-05 { inherit system; };
                 helix_pkg = inputs.helix-flake.packages.${system}.default;
-                lpkgs = import inputs.nixpkgs-latest { inherit system; };
+                lpkgs = import inputs.nixpkgs-latest {
+                  inherit system;
+                  config.allowUnfree = true;
+                };
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

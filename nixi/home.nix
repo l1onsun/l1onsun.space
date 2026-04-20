@@ -16,40 +16,45 @@
     ../programs/scripts.nix
     ../programs/niri
   ];
+  programs.git.extraConfig.credential.credentialStore = pkgs.lib.mkForce "plaintext";
 
   # Packages that should be installed to the user profile.
   home.packages = [
     pkgs.qbittorrent
     pkgs.smartmontools
-    
+
     pkgs.chromium
     pkgs.alacritty
     pkgs.qutebrowser
-    
+
     pkgs.librewolf
     pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     pkgs.tuxguitar
     pkgs.telegram-desktop
-    
+
     pkgs.hydralauncher
     pkgs.wineWowPackages.waylandFull
     pkgs.lutris
-    
+
     pkgs.steam
     pkgs.daggerfall-unity
     pkgs.gamescope
-    
+
     pkgs.git-crypt
     pkgs.pipx
 
     pkgs.pinta
-    pkgs.clang  # TODO: remove
+    pkgs.clang # TODO: remove
+
+    pkgs.audacity
+    pkgs.kdePackages.kdenlive
 
     lpkgs.opencode
+    # pkgs.yandex-music
+    lpkgs.claude-code
   ];
   programs.waybar.enable = true;
   programs.firefox.enable = true;
-
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

@@ -10,7 +10,7 @@
       pkgs.onefetch
       pkgs.yazi
       pkgs.ncdu
-      pkgs.yazi
+      pkgs.edir
       pkgs.w3m
       pkgs.python313Packages.ipython
       pkgs.tlrc  # tldr
