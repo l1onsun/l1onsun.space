@@ -1,4 +1,9 @@
-{ pkgs, helix_pkg, lpkgs, ... }:
+{
+  pkgs,
+  helix_pkg,
+  lpkgs,
+  ...
+}:
 
 {
   home.username = "l1onsun";
@@ -38,7 +43,7 @@
     pkgs.fuzzel
 
     pkgs.tuxguitar
-    pkgs.telegram-desktop
+    lpkgs.telegram-desktop
 
     pkgs.steam
     # opkgs.tome4
@@ -88,6 +93,16 @@
     pkgs.gping
 
     pkgs.ueberzugpp
+    (pkgs.symlinkJoin {
+      name = "claude-code-proxied";
+      paths = [ lpkgs.claude-code ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/claude \
+          --set HTTPS_PROXY "http://127.0.0.1:3738" \
+          --set HTTP_PROXY "http://127.0.0.1:3738"
+      '';
+    })
   ];
   programs.firefox.enable = true;
   # programs.navi.enable = true;

@@ -27,6 +27,8 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Kaliningrad";
+  # time.timeZone = "Europe/Moscow";
+  # time.timeZone = "Asia/Shanghai";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -148,6 +150,12 @@
   # virtualisation.docker.package = pkgs.docker_26;
   virtualisation.docker.storageDriver = "btrfs";
   virtualisation.docker.enableOnBoot= false;
+
+  systemd.services.docker.serviceConfig.Environment = [
+    "HTTP_PROXY=http://127.0.0.1:3738"
+    "HTTPS_PROXY=http://127.0.0.1:3738"
+    "NO_PROXY=localhost,127.0.0.1"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
