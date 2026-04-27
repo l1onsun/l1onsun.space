@@ -92,7 +92,10 @@
 
     pkgs.gping
 
+    pkgs.visidata
+
     pkgs.ueberzugpp
+    pkgs.mitmproxy
     (pkgs.symlinkJoin {
       name = "claude-code-proxied";
       paths = [ lpkgs.claude-code ];
@@ -103,6 +106,10 @@
           --set HTTP_PROXY "http://127.0.0.1:3738"
       '';
     })
+    (pkgs.writeShellScriptBin "claude-commit" ''
+      claude -p "Create a git commit for files in stage. Use small, one line commit message." \
+        --allowed-tools "Bash(git:*)" "$@"
+    '')
   ];
   programs.firefox.enable = true;
   # programs.navi.enable = true;
