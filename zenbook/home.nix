@@ -19,6 +19,7 @@
     (import ../programs/sway.nix { bar_font_size = 12.0; })
     ../programs/ssh.nix
     ../programs/aider.nix
+    ../programs/claude.nix
     ../programs/tome4
     ../programs/vscode
     ../programs/qutebrowser.nix
@@ -96,20 +97,6 @@
 
     pkgs.ueberzugpp
     pkgs.mitmproxy
-    (pkgs.symlinkJoin {
-      name = "claude-code-proxied";
-      paths = [ lpkgs.claude-code ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/claude \
-          --set HTTPS_PROXY "http://127.0.0.1:3738" \
-          --set HTTP_PROXY "http://127.0.0.1:3738"
-      '';
-    })
-    (pkgs.writeShellScriptBin "claude-commit" ''
-      claude -p "Create a git commit for files in stage. Use small, one line commit message." \
-        --allowed-tools "Bash(git:*)" "$@"
-    '')
   ];
   programs.firefox.enable = true;
   # programs.navi.enable = true;

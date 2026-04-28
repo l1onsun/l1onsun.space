@@ -28,6 +28,7 @@
       dft = "difftool";
       stash-diff = "stash show -p stash@{0}";
       ignore = "ls-files --others --exclude-standard --directory";
+      touch = ''!f() { touch "$@" && git add "$@"; }; f'';
     };
     extraConfig = {
       # filter.lfs = {
