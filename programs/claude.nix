@@ -27,6 +27,7 @@
       Staged diff:
       $DIFF" \
         --model haiku \
+        --verbose \
         --allowed-tools "Bash(git:*)" "$@"
     '')
   ];
