@@ -97,6 +97,7 @@
 
     pkgs.ueberzugpp
     pkgs.mitmproxy
+    pkgs.appimage-run
   ];
   programs.firefox.enable = true;
   # programs.navi.enable = true;

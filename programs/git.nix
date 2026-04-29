@@ -13,6 +13,12 @@
     userName = "Ilya Cherezov";
     userEmail = "cherezov.ia@phystech.edu";
 
+    ignores = [
+      ".direnv/"
+      ".envrc"
+      "mpl-pygls-lsp.log"
+    ];
+
     # difftastic.enable = true;
     # config = {
     aliases = {
