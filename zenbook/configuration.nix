@@ -112,6 +112,7 @@
     "root"
     "l1onsun"
   ];
+  nix.settings.netrc-file = "/home/l1onsun/.netrc";
   environment.variables.EDITOR = "hx";
   fonts.packages = [
     pkgs.noto-fonts
