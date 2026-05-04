@@ -19,7 +19,7 @@
     (import ../programs/sway.nix { bar_font_size = 12.0; })
     ../programs/ssh.nix
     ../programs/aider.nix
-    ../programs/claude.nix
+    # ../programs/claude.nix
     ../programs/tome4
     ../programs/vscode
     ../programs/qutebrowser.nix
@@ -98,6 +98,8 @@
     pkgs.ueberzugpp
     pkgs.mitmproxy
     pkgs.appimage-run
+
+    lpkgs.opencode
   ];
   programs.firefox.enable = true;
   # programs.navi.enable = true;

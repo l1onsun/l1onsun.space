@@ -29,14 +29,14 @@
     };
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
     helix-flake.url = "github:helix-editor/helix";
-    nixpkgs-latest.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-latest.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
   outputs =
     inputs:
     let
       x86NixosSystem =
-        { configurationPath, homePath }:
+        { configurationPath, homeUsers }:
         let
           system = "x86_64-linux";
         in
@@ -56,13 +56,16 @@
                 helix_pkg = inputs.helix-flake.packages.${system}.default;
                 lpkgs = import inputs.nixpkgs-latest {
                   inherit system;
-                  config.allowUnfree = true;
+                  # config.allowUnfree = true;
                 };
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "hm-backup";
-              home-manager.users.l1onsun = import homePath;
+              # home-manager.users = {
+              #   l1onsun = import homePath;
+              # } // extraHomeUsers;
+              home-manager.users = homeUsers;
             }
           ];
         };
@@ -70,17 +73,20 @@
     {
       nixosConfigurations.nixi = x86NixosSystem {
         configurationPath = ./nixi/configuration.nix;
-        homePath = ./nixi/home.nix;
+        homeUsers.l1onsun = import ./nixi/home.nix;
       };
 
       nixosConfigurations.oldlenova = x86NixosSystem {
         configurationPath = ./oldlenova/configuration.nix;
-        homePath = ./oldlenova/home.nix;
+        homeUsers.l1onsun = import ./oldlenova/home.nix;
       };
 
       nixosConfigurations.zenbook = x86NixosSystem {
         configurationPath = ./zenbook/configuration.nix;
-        homePath = ./zenbook/home.nix;
+        homeUsers = {
+          l1onsun = import ./zenbook/home.nix;
+          # agent-echo = import ./agent-Echo/home.nix;
+        };
       };
 
       nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {

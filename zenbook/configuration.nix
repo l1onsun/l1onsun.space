@@ -103,12 +103,22 @@
     ];
     shell = pkgs.fish;
   };
+  users.users.agent-echo = {
+    isNormalUser = true;
+    description = "agent-echo";
+    extraGroups = [ ];
+    shell = pkgs.fish;
+  };
   programs.fish.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.trusted-users = [
+    "root"
+    "l1onsun"
+  ];
+  nix.settings.allowed-users = [
     "root"
     "l1onsun"
   ];
