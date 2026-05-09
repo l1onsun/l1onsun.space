@@ -5,10 +5,10 @@
   ...
 }:
 {
-  options.programs.polza_aichat = {
-    apiKey = lib.mkOption {
-      type = lib.types.str;
-      description = "API token for polza-ai";
+  options.programs.my_aichat = {
+    ai_providers = lib.mkOption {
+      type = lib.types.listOf lib.types.attrs;
+      description = "List of AI provider configurations";
     };
   };
   config = {
@@ -16,19 +16,15 @@
 
     # programs.aichat.enable = true;  # TODO: it IS in home manager
 
-    xdg.configFile."aichat/config.yaml".text = ''
-      clients:
-        - type: openai-compatible
-          name: polza-ai
-          api_base: https://api.polza.ai/v1
-          api_key: ${config.programs.polza_aichat.apiKey}
-          models:
-            - name: openai/gpt-5.2
-            - name: deepseek/deepseek-v3.2
-            - name: z-ai/glm-5
-
-      model: polza-ai:deepseek/deepseek-v3.2
-    '';
+    xdg.configFile."aichat/config.yaml".text = lib.generators.toYAML {} {
+      clients = map (p: {
+        type = p.type;
+        name = p.name;
+        api_base = p.api_base;
+        api_key = p.api_key;
+        models = map (m: { name = m.name; }) p.models;
+      }) config.programs.my_aichat.ai_providers;
+      model = "polza-ai:deepseek/deepseek-v3.2";
+    };
   };
 }
-              # max_tokens: 8192

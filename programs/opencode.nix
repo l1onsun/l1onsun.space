@@ -5,14 +5,10 @@
   ...
 }:
 {
-  options.programs.mimo_opencode = {
-    baseURL = lib.mkOption {
-      type = lib.types.str;
-      description = "Base URL for the MiMo OpenAI-compatible provider";
-    };
-    apiKey = lib.mkOption {
-      type = lib.types.str;
-      description = "API token for MiMo";
+  options.programs.my_opencode = {
+    ai_providers = lib.mkOption {
+      type = lib.types.listOf lib.types.attrs;
+      description = "List of AI provider configurations";
     };
   };
   config = {
@@ -20,40 +16,25 @@
 
     xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
       "$schema" = "https://opencode.ai/config.json";
-      provider = {
-        mimo = {
-          npm = "@ai-sdk/openai-compatible";
-          name = "MiMo";
+      provider = builtins.listToAttrs (map (p: {
+        name = p.name;
+        value = {
+          npm = p.npm;
+          name = p.name;
           options = {
-            baseURL = config.programs.mimo_opencode.baseURL;
-            apiKey = config.programs.mimo_opencode.apiKey;
+            baseURL = p.api_base;
+            apiKey = p.api_key;
           };
-          models = {
-            "mimo-v2.5-pro" = {
-              name = "mimo-v2.5-pro";
-              limit = {
-                context = 1048576;
-                output = 131072;
-              };
-              modalities = {
-                input = [ "text" ];
-                output = [ "text" ];
-              };
+          models = builtins.listToAttrs (map (m: {
+            name = m.name;
+            value = {
+              name = m.name;
+              limit = m.limit or { context = 128000; output = 32768; };
+              modalities = m.modalities or { input = [ "text" ]; output = [ "text" ]; };
             };
-            "mimo-v2.5" = {
-              name = "mimo-v2.5";
-              limit = {
-                context = 262144;
-                output = 32768;
-              };
-              modalities = {
-                input = [ "text" ];
-                output = [ "text" ];
-              };
-            };
-          };
+          }) p.models);
         };
-      };
+      }) (builtins.filter (p: p ? npm) config.programs.my_opencode.ai_providers));
     };
   };
 }

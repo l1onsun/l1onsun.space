@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lpkgs, lib, ... }:
 {
   home.packages = [
     (pkgs.writeShellScriptBin "rsync-to" ''
@@ -31,5 +31,21 @@
       DST="$2"
       ${lib.getExe pkgs.rsync} -avzP --exclude='.git' "$SRC" "$DST"
     '')
+
+    (pkgs.writeShellScriptBin "mimo" ''
+      ${lib.getExe pkgs.aichat} --model mimo:mimo-v2.5 "$@"
+    '')
+
+    (pkgs.writeShellScriptBin "mimo-pro" ''
+      ${lib.getExe pkgs.aichat} --model mimo:mimo-v2.5-pro "$@"
+    '')
+
+    # (pkgs.writeShellScriptBin "mimo" ''
+    #   ${lib.getExe lpkgs.llm} chat -m mimo-v2.5 "$@"
+    # '')
+
+    # (pkgs.writeShellScriptBin "mimo-pro" ''
+    #   ${lib.getExe lpkgs.llm} chat -m mimo-v2.5-pro "$@"
+    # '')
   ];
 }
