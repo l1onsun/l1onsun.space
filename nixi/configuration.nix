@@ -18,6 +18,7 @@
     ./hardware-configuration.nix
     ../services/nix-ld.nix
     ../services/rathole.nix
+    ../services/vikunja.nix
     # ../services/smtp
     ../services/ddcutil.nix
     ../crypt/nixos.nix
