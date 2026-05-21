@@ -7,9 +7,7 @@
     port = 3456;
     settings = {
       service = {
-        # Отключаем регистрацию новых пользователей (первый будет администратором)
         enableregistration = false;
-        # Отключаем email-уведомления (при необходимости)
         enableemailreminders = false;
       };
     };

@@ -51,7 +51,7 @@
 
     lpkgs.opencode
     # pkgs.yandex-music
-    lpkgs.claude-code
+    # lpkgs.claude-code
   ];
   programs.waybar.enable = true;
   programs.firefox.enable = true;
