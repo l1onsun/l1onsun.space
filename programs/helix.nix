@@ -167,6 +167,7 @@
     pkgs.superhtml
     pkgs.vscode-langservers-extracted
     pkgs.nodePackages.prettier
-    pkgs.lsp-ai
+    # pkgs.lsp-ai
+    pkgs.jsonnet-language-server
   ];
 }

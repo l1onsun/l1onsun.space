@@ -47,5 +47,17 @@
     # (pkgs.writeShellScriptBin "mimo-pro" ''
     #   ${lib.getExe lpkgs.llm} chat -m mimo-v2.5-pro "$@"
     # '')
+
+    (pkgs.writeShellScriptBin "pro" ''
+      if [ $# -eq 0 ]; then
+        echo "Usage: pro <command> [args...]"
+        exit 1
+      fi
+
+      ALL_PROXY=socks5://localhost:3737 \
+      HTTP_PROXY=http://localhost:3738 \
+      HTTPS_PROXY=http://localhost:3738 \
+        "$@"
+    '')
   ];
 }
