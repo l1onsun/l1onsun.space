@@ -1,7 +1,7 @@
 {
   pkgs,
-  helix_pkg,
-  lpkgs,
+  opkgs,
+  config,
   ...
 }:
 
@@ -26,7 +26,7 @@
     ../programs/scripts.nix
     ../crypt
   ];
-  programs.helix.package = helix_pkg;
+  # programs.helix.package = helix_pkg;
 
   home.packages = [
     pkgs.unzip
@@ -44,7 +44,7 @@
     pkgs.fuzzel
 
     pkgs.tuxguitar
-    lpkgs.telegram-desktop
+    pkgs.telegram-desktop
 
     pkgs.steam
     # opkgs.tome4
@@ -59,13 +59,13 @@
 
     # pkgs.glow
     pkgs.marksman
-    pkgs.pipx
+    # pkgs.pipx
     pkgs.gcc
 
     pkgs.grim
     pkgs.quickemu
 
-    pkgs.python310
+    # pkgs.python311
     pkgs.edir # mv files bulkly using editor
     pkgs.tea # gitea cli
     pkgs.git-crypt
@@ -83,7 +83,7 @@
 
     # pkgs.nekoray
     pkgs.freetube
-    lpkgs.yt-dlp
+    # lpkgs.yt-dlp
     pkgs.folo
 
     pkgs.p7zip
@@ -99,14 +99,14 @@
     pkgs.mitmproxy
     pkgs.appimage-run
 
-    lpkgs.opencode
+    pkgs.opencode
+    opkgs.light
   ];
   programs.firefox.enable = true;
-  # programs.navi.enable = true;
-  # programs.navi.enableFishIntegration = true;
+  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
 
-  home.stateVersion = "23.11";
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
+  home.stateVersion = "23.11";
 }

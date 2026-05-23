@@ -49,7 +49,7 @@
     pkgs.audacity
     pkgs.kdePackages.kdenlive
 
-    lpkgs.opencode
+    # lpkgs.opencode
     # pkgs.yandex-music
     # lpkgs.claude-code
   ];

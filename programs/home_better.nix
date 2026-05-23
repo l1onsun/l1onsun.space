@@ -5,7 +5,7 @@
       ../programs/tmux.nix
     ];
     home.packages = [
-      pkgs.neofetch
+      pkgs.hyfetch
       pkgs.just
       pkgs.onefetch
       pkgs.yazi

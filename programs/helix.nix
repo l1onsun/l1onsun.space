@@ -166,8 +166,7 @@
     pkgs.nixfmt-rfc-style
     pkgs.superhtml
     pkgs.vscode-langservers-extracted
-    pkgs.nodePackages.prettier
-    # pkgs.lsp-ai
+    pkgs.prettier
     pkgs.jsonnet-language-server
   ];
 }

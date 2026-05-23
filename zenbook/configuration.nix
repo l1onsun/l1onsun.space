@@ -134,7 +134,7 @@
     # pkgs.aporetic 
     pkgs.font-awesome
   ];
-  programs.light.enable = true;
+  # programs.light.enable = true;
   # programs.nekoray.enable = true;
   # programs.nekoray.tunMode.enable = true;
   programs.proxychains = {
