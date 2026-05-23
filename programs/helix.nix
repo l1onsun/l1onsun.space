@@ -163,7 +163,7 @@
     pkgs.black
     pkgs.typos-lsp
     pkgs.nil
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
     pkgs.superhtml
     pkgs.vscode-langservers-extracted
     pkgs.prettier

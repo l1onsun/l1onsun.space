@@ -103,7 +103,7 @@
     ueberzugpp
     zoxide
     nil
-    nixfmt-rfc-style
+    nixfmt
     w3m
     just
     speedtest-cli

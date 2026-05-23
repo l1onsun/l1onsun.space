@@ -10,8 +10,6 @@
     enable = true;
     lfs.enable = true;
     lfs.skipSmudge = true;
-    userName = "Ilya Cherezov";
-    userEmail = "cherezov.ia@phystech.edu";
 
     ignores = [
       ".direnv/"
@@ -19,24 +17,26 @@
       "mpl-pygls-lsp.log"
     ];
 
-    # difftastic.enable = true;
-    # config = {
-    aliases = {
-      st = "status -sb";
-      ll = "log --oneline -n 10";
-      cm = "commit -m";
-      ca = "commit --amend";
-      cma = "commit --amend";
-      d = "diff --name-only --diff-filter=d";
-      ch = "checkout";
-      sw = "checkout -";
-      rsw = "restore --staged --worktree";
-      dft = "difftool";
-      stash-diff = "stash show -p stash@{0}";
-      ignore = "ls-files --others --exclude-standard --directory";
-      touch = ''!f() { touch "$@" && git add "$@"; }; f'';
-    };
-    extraConfig = {
+    settings = {
+      user.name = "Ilya Cherezov";
+      user.email = "cherezov.ia@phystech.edu";
+
+      alias = {
+        st = "status -sb";
+        ll = "log --oneline -n 10";
+        cm = "commit -m";
+        ca = "commit --amend";
+        cma = "commit --amend";
+        d = "diff --name-only --diff-filter=d";
+        ch = "checkout";
+        sw = "checkout -";
+        rsw = "restore --staged --worktree";
+        dft = "difftool";
+        stash-diff = "stash show -p stash@{0}";
+        ignore = "ls-files --others --exclude-standard --directory";
+        touch = ''!f() { touch "$@" && git add "$@"; }; f'';
+      };
+
       # filter.lfs = {
       #   clean = "git-lfs clean -- %f";
       #   smudge = "git-lfs smudge --skip -- %f";
@@ -56,7 +56,5 @@
       credential.helper = "manager";
       credential.credentialStore = "secretservice";
     };
-
-    # };
   };
 }

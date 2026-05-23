@@ -15,7 +15,7 @@
     yazi
     zoxide
     nil
-    nixfmt-rfc-style
+    nixfmt
     w3m
     just
     onefetch
