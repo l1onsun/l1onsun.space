@@ -7,12 +7,12 @@
   pkgs,
   modulesPath,
   ...
-# }: let
-#   cuda = pkgs.cudaPackages.cudatoolkit;
-#   nvidia = config.boot.kernelPackages.nvidiaPackages.production;
-# in {
-}:
-{
+}: let
+  cuda = pkgs.cudaPackages.cudatoolkit;
+  nvidia = config.boot.kernelPackages.nvidiaPackages.production;
+in {
+# }:
+# {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ../services/vial.nix ];
 
   boot.initrd.availableKernelModules = [
@@ -109,8 +109,8 @@
     enable = true;
     enable32Bit = true;
   };
-  # environment.systemPackages = [ cuda ];
-  # environment.variables.CUDA_PATH = cuda;
-  # environment.variables.CUDA_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ cuda nvidia ];
+  environment.systemPackages = [ cuda ];
+  environment.variables.CUDA_PATH = cuda;
+  environment.variables.CUDA_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ cuda nvidia ];
   # environment.variables.EXTRA_LDFLAGS = "-L${nvidia}/lib";
 }

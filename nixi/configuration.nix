@@ -24,6 +24,7 @@
     ../crypt/nixos.nix
   ];
   services.myRathole.enable = true;
+  services.wastebin.enable = true;
 
 
   # Use the systemd-boot EFI boot loader.
@@ -151,10 +152,10 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   networking.firewall.allowedTCPPorts = [
-     2283
-     8017
-     8000 # marketw
-     8025 # marketw
+     # 2283 # immich
+     # 8017 # ???
+     # 8000 # marketw
+     # 8025 # marketw
    ];
 
 

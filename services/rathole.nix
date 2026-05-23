@@ -15,13 +15,16 @@ let
     local_addr = "127.0.0.1:22"
 
     [client.services.immich]
-    local_addr = "0.0.0.0:2283"
+    local_addr = "127.0.0.1:2283"  # "0.0.0.0:2283"
 
     [client.services.happy_tg_bot]
     local_addr = "127.0.0.1:8443"
 
     [client.services.vikunja]
     local_addr = "127.0.0.1:3456"
+
+    [client.services.wastebin]
+    local_addr = "127.0.0.1:8088"
 
     # [client.services.test_market]
     # local_addr = "127.0.0.1:8000"
