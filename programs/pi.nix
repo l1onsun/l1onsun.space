@@ -12,9 +12,23 @@
     };
   };
   config = {
-    home.packages = [ pkgs.pi-coding-agent ];
+    home.packages = [
+      (pkgs.symlinkJoin {
+        name = "pi-coding-agent-wrapped";
+        paths = [ pkgs.pi-coding-agent ];
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/pi \
+            --set PI_SKIP_VERSION_CHECK 1
+        '';
+      })
+    ];
     
-    xdg.configFile."pi/agent/models.json".text = builtins.toJSON {
+    home.file.".pi/agent/keybindings.json".text = builtins.toJSON {
+      "app.editor.external" = [ "ctrl+g" "alt+e" ];
+    };
+
+    home.file.".pi/agent/models.json".text = builtins.toJSON {
       providers = builtins.listToAttrs (map (p: {
         name = p.name;
         value = {
