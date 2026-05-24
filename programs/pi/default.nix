@@ -22,8 +22,7 @@
             --set PI_SKIP_VERSION_CHECK 1
         '';
       })
-      pkgs.rustPlatform.buildRustPackage
-      {
+      (pkgs.rustPlatform.buildRustPackage {
         pname = "webclaw-cli";
         version = "0.1.0";
         src = pkgs.fetchFromGitHub {
@@ -37,13 +36,11 @@
         nativeBuildInputs = with pkgs; [
           pkg-config
           cmake
-          perl
           go
-          clang
           git
           rustPlatform.bindgenHook
         ];
-      }
+      })
     ];
 
     home.file.".pi/agent/AGENTS.md".source = ./AGENTS.md;
