@@ -45,6 +45,7 @@
 
     home.file.".pi/agent/AGENTS.md".source = ./AGENTS.md;
     home.file.".pi/agent/extensions".source = ./extensions;
+    home.file.".pi/agent/skills".source = ./skills;
 
     home.file.".pi/agent/keybindings.json".text = builtins.toJSON {
       "app.editor.external" = [

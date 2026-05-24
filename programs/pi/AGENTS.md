@@ -12,6 +12,12 @@ All pi configuration is stored in `$NIXOS_HOME/programs/pi` (for example, this A
 Extensions are TypeScript modules in `$NIXOS_HOME/programs/pi/extensions/`.
 They are symlinked to `~/.pi/agent/extensions/`
 
+## Skills
+
+Skills are self-contained capability packages in `$NIXOS_HOME/programs/pi/skills/`.
+They are symlinked to `~/.pi/agent/skills/`
+Each skill has a `SKILL.md` with frontmatter and instructions, plus optional `scripts/` and `references/`.
+
 ## Modifying config
 
 If you need to modify pi or NixOS config:
