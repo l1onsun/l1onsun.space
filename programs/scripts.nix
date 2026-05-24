@@ -48,6 +48,8 @@
     #   ${lib.getExe lpkgs.llm} chat -m mimo-v2.5-pro "$@"
     # '')
 
+    (pkgs.writeShellScriptBin "ab" (builtins.readFile ../utils/ab.sh))
+
     (pkgs.writeShellScriptBin "pro" ''
       if [ $# -eq 0 ]; then
         echo "Usage: pro <command> [args...]"
