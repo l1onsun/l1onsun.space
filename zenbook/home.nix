@@ -17,7 +17,7 @@
     (import ../programs/alacritty.nix { font_size = 15; })
     (import ../programs/sway.nix { bar_font_size = 12.0; })
     ../programs/ssh.nix
-    ../programs/aider.nix
+    # ../programs/aider.nix
     # ../programs/claude.nix
     ../programs/tome4
     ../programs/vscode
@@ -27,7 +27,30 @@
   ];
   # programs.helix.package = helix_pkg;
 
-  home.packages = [
+  home.packages = let
+    webclaw = pkgs.rustPlatform.buildRustPackage {
+      pname = "webclaw-cli";
+      version = "0.1.0";
+      src = pkgs.fetchFromGitHub {
+        owner = "0xMassi";
+        repo = "webclaw";
+        rev = "main";
+        sha256 = "1jaxa4is3pf9k7wbwi2hx5blv2xql1jz5akvysd4vay0r1gbgbha";
+      };
+      cargoHash = "sha256-wJPdTd6vrvwALr2gHI6vy4Z6g+enVlarILzvPEzdrWQ=";
+      buildAndTestSubdir = "crates/webclaw-cli";
+      nativeBuildInputs = with pkgs; [
+        pkg-config
+        cmake
+        perl
+        go
+        clang
+        git
+        rustPlatform.bindgenHook
+      ];
+    };
+  in [
+    webclaw
     pkgs.unzip
     pkgs.foot
     pkgs.kitty
@@ -67,7 +90,6 @@
     # pkgs.python311
     pkgs.edir # mv files bulkly using editor
     pkgs.tea # gitea cli
-    pkgs.git-crypt
     pkgs.neovim
     pkgs.kakoune
 

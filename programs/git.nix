@@ -4,6 +4,7 @@
     pkgs.difftastic
     pkgs.git-credential-manager
     pkgs.xdg-utils
+    pkgs.git-crypt
   ];
   programs.git.package = pkgs.git;
   programs.git = {
