@@ -125,6 +125,7 @@
   nix.settings.netrc-file = "/home/l1onsun/.netrc";
   environment.variables.EDITOR = "hx";
   environment.variables.SUDO_ASKPASS = "${pkgs.x11_ssh_askpass}/libexec/x11-ssh-askpass";
+  environment.variables.NIXOS_HOME = "/home/l1onsun/my/l1onsun.space";
   fonts.packages = [
     pkgs.noto-fonts
     # pkgs.noto-fonts-cjk
