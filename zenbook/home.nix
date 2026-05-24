@@ -1,6 +1,5 @@
 {
   pkgs,
-  opkgs,
   config,
   ...
 }:
@@ -100,7 +99,6 @@
     pkgs.appimage-run
 
     pkgs.opencode
-    opkgs.light
   ];
   programs.firefox.enable = true;
   programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";

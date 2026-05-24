@@ -23,8 +23,8 @@
           "${modifier}+tab" = "workspace back_and_forth";
           "${modifier}+n" = "exec swaync-client -t -sw";
           "${modifier}+Shift+Return" = "exec ${pkgs.alacritty} -e fish -C 'my/gits/l1onsun.space/; onefetch'";
-          "XF86MonBrightnessDown" = "exec light -U 5";
-          "XF86MonBrightnessUp" = "exec light -A 5";
+          "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+          "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
           "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.04+";
           "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.04-";
           "XF86AudioMute" = " exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -79,6 +79,7 @@
   home.packages = [
     pkgs.swaynotificationcenter
     pkgs.swaykbdd
+    pkgs.brightnessctl
   ];
 
   services.gammastep = {

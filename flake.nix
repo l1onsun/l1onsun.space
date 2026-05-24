@@ -45,7 +45,7 @@
           inherit system;
           specialArgs = {
             inherit inputs;
-            opkgs = import inputs.nixpkgs-24-05 { inherit system; }; # iosevka, light
+            opkgs = import inputs.nixpkgs-24-05 { inherit system; }; # iosevka
           };
           modules = [
             configurationPath
