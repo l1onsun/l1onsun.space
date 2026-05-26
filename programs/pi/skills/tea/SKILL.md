@@ -64,10 +64,49 @@ There are two types — regular and review (inline code) comments.
 ```bash
 # Regular issue/PR comments
 tea api '/repos/{owner}/{repo}/issues/{pr_number}/comments'
-
-# Inline review comments (code suggestions)
-tea api '/repos/{owner}/{repo}/pulls/{pr_number}/comments'
 ```
+
+### Getting all inline review comments
+
+Inline code comments are attached to reviews, not directly to the PR.
+The endpoint `/pulls/{pr}/comments` may return 404 — this is a known quirk.
+
+**Step-by-step workflow:**
+
+```bash
+# 1. List all reviews on a PR
+tea api '/repos/{owner}/{repo}/pulls/{pr_number}/reviews'
+
+# 2. For each review (with comments_count > 0), fetch its inline comments:
+tea api '/repos/{owner}/{repo}/pulls/{pr_number}/reviews/{review_id}/comments'
+```
+
+Each review comment contains: `body`, `user.login`, `path` (file), `diff_hunk`, `created_at`.
+
+**Example response from `/pulls/{pr}/reviews`:**
+```json
+[
+  {
+    "id": 18315,
+    "user": { "login": "temikgo" },
+    "state": "REQUEST_CHANGES",
+    "body": "",
+    "comments_count": 27,
+    "submitted_at": "2026-05-23T11:28:34+02:00",
+    "stale": true
+  },
+  {
+    "id": 18006,
+    "user": { "login": "iliacherezov" },
+    "state": "COMMENT",
+    "body": "",
+    "comments_count": 1,
+    "submitted_at": "2026-05-18T17:06:16+02:00",
+    "stale": true
+  }
+]
+```
+Note: `body` is often empty — the actual feedback lives in inline comments fetched via `reviews/{id}/comments`.
 
 ## tea api — Arbitrary API Calls
 

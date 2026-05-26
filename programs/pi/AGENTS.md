@@ -3,6 +3,13 @@
 This is NixOS with fully declarative configuration living in `$NIXOS_HOME`.
 Do not try to install anything non-declaratively.
 
+# Aditional available tools
+fd - fast file finder (alternative to find)
+rg - fast grep (ripgrep)
+jq - JSON processor (filter, transform, extract data)
+sd - simple find & replace (simpler sed alternative)
+ab - connects agent-browser and prints agent-browser usage instructions
+
 ## Pi configuration
 
 All pi configuration is stored in `$NIXOS_HOME/programs/pi` (for example, this AGENTS.md source is `$NIXOS_HOME/programs/pi/AGENTS.md`).
