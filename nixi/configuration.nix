@@ -126,7 +126,6 @@
   security.rtkit.enable = true;  # for pulseaudio?? not sure it necessery
   security.sudo.package = pkgs.sudo.override { withInsults = true; };
 
-  programs.light.enable = true;
   programs.fish.enable = true;
   # programs.nh = {
   #   enable = true;
@@ -161,7 +160,7 @@
 
   # TODO: rootless docker
   virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_28;
+  # virtualisation.docker.package = pkgs.docker_28;
   virtualisation.docker.storageDriver = "btrfs";
 
 

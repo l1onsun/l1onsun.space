@@ -89,6 +89,8 @@ in {
       "libcusparse"
       "libnpp"
 
+      "nvidia-kernel-modules"
+
       # "claude-code"
       "claude-code"
     ];

@@ -34,14 +34,14 @@
 
     pkgs.hydralauncher
     pkgs.wineWowPackages.waylandFull
-    pkgs.lutris
+    # pkgs.lutris
 
     pkgs.steam
     pkgs.daggerfall-unity
     pkgs.gamescope
 
     pkgs.git-crypt
-    pkgs.pipx
+    # pkgs.pipx
 
     pkgs.pinta
     pkgs.clang # TODO: remove
