@@ -121,6 +121,7 @@
     pkgs.appimage-run
 
     pkgs.opencode
+    pkgs.electrum
   ];
   programs.firefox.enable = true;
   programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
