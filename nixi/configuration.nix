@@ -26,7 +26,6 @@
   services.myRathole.enable = true;
   services.wastebin.enable = true;
 
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.consoleMode = "max";
@@ -36,7 +35,7 @@
   networking.hostName = "nixi"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Kaliningrad";
@@ -81,6 +80,13 @@
     ];
     shell = pkgs.fish;
   };
+  users.users.agentEcho = {
+    isNormalUser = true;
+    description = "agentEcho";
+    extraGroups = [ ];
+    hashedPassword = "$6$eml6s8FOpyA3M3pa$W6lZ62km.kjp8BdWGvOOHrNHcoczJgx/3CMheGiZxBo4PVQ6Hfhebjmc/a6R/mMqpH.xSy056nQQvtPUJWHKb0";
+    shell = pkgs.fish;
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -90,7 +96,7 @@
     "root"
     "l1onsun"
   ];
-  
+
   environment.systemPackages = with pkgs; [
     fish
     starship
@@ -123,7 +129,7 @@
     pkgs.font-awesome
   ];
   security.polkit.enable = true;
-  security.rtkit.enable = true;  # for pulseaudio?? not sure it necessery
+  security.rtkit.enable = true; # for pulseaudio?? not sure it necessery
   security.sudo.package = pkgs.sudo.override { withInsults = true; };
 
   programs.fish.enable = true;
@@ -143,7 +149,12 @@
   };
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  # Enable the gnome-keyring secrets vault. 
+  services.openssh.settings = {
+    AllowUsers = [ "l1onsun" ];
+    PasswordAuthentication = false;
+    KbdInteractiveAuthentication = true;
+  };
+  # Enable the gnome-keyring secrets vault.
   services.gnome.gnome-keyring.enable = true;
   # Will be exposed through DBus to programs willing to store secrets.
   programs.niri.enable = true;
@@ -151,18 +162,16 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   networking.firewall.allowedTCPPorts = [
-     # 2283 # immich
-     # 8017 # ???
-     # 8000 # marketw
-     # 8025 # marketw
-   ];
-
+    # 2283 # immich
+    # 8017 # ???
+    # 8000 # marketw
+    # 8025 # marketw
+  ];
 
   # TODO: rootless docker
   virtualisation.docker.enable = true;
   # virtualisation.docker.package = pkgs.docker_28;
   virtualisation.docker.storageDriver = "btrfs";
-
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

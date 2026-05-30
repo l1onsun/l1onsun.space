@@ -74,7 +74,10 @@
     {
       nixosConfigurations.nixi = x86NixosSystem {
         configurationPath = ./nixi/configuration.nix;
-        homeUsers.l1onsun = import ./nixi/home.nix;
+        homeUsers = {
+          l1onsun = import ./nixi/home.nix;
+          agentEcho = import ./agent-Echo/home.nix;
+        };
       };
 
       nixosConfigurations.oldlenova = x86NixosSystem {
