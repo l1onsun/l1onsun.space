@@ -51,6 +51,7 @@
 
     # lpkgs.opencode
     # pkgs.yandex-music
+    pkgs.yandex-disk
     # lpkgs.claude-code
   ];
   programs.waybar.enable = true;

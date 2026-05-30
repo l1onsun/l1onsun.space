@@ -91,6 +91,8 @@ in {
 
       "nvidia-kernel-modules"
 
+      "yandex-disk"
+
       # "claude-code"
       "claude-code"
     ];
