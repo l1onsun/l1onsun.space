@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 {
-  home.username = "agent-echo";
-  home.homeDirectory = "/home/agent-echo";
+  home.username = "agentEcho";
+  home.homeDirectory = "/home/agentEcho";
 
   home.sessionPath = [ "$HOME/.local/bin" ];
 
@@ -12,7 +12,7 @@
     ../programs/starship.nix
     ../programs/fzf.nix
     ../programs/ripgrep.nix
-    ../programs/claude.nix
+    ../crypt/ai_models.nix
   ];
 
   home.packages = [

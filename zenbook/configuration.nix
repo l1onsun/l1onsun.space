@@ -5,11 +5,11 @@
 { pkgs, opkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../services/nix-ld.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../services/nix-ld.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -71,7 +71,7 @@
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   security.sudo.package = pkgs.sudo.override { withInsults = true; };
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -95,25 +95,29 @@
     isNormalUser = true;
     description = "l1onsun";
     extraGroups = [
-     "networkmanager"
-     "wheel"
-     "sudo"
-     "video"
-     "docker"
+      "networkmanager"
+      "wheel"
+      "sudo"
+      "video"
+      "docker"
     ];
     shell = pkgs.fish;
   };
-  users.users.agent-echo = {
+  users.users.agentEcho = {
     isNormalUser = true;
-    description = "agent-echo";
+    description = "agentEcho";
     extraGroups = [ ];
+    hashedPassword = "$6$eml6s8FOpyA3M3pa$W6lZ62km.kjp8BdWGvOOHrNHcoczJgx/3CMheGiZxBo4PVQ6Hfhebjmc/a6R/mMqpH.xSy056nQQvtPUJWHKb0";
     shell = pkgs.fish;
   };
   programs.fish.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nix.settings.trusted-users = [
     "root"
     "l1onsun"
@@ -121,6 +125,7 @@
   nix.settings.allowed-users = [
     "root"
     "l1onsun"
+    "agentEcho"
   ];
   nix.settings.netrc-file = "/home/l1onsun/.netrc";
   environment.variables.EDITOR = "hx";
@@ -133,7 +138,7 @@
     pkgs.noto-fonts-color-emoji
     # opkgs.iosevka
     pkgs.iosevka
-    # pkgs.aporetic 
+    # pkgs.aporetic
     pkgs.font-awesome
   ];
   # programs.light.enable = true;
@@ -162,7 +167,7 @@
   virtualisation.docker.enable = true;
   # virtualisation.docker.package = pkgs.docker_26;
   virtualisation.docker.storageDriver = "btrfs";
-  virtualisation.docker.enableOnBoot= false;
+  virtualisation.docker.enableOnBoot = false;
 
   systemd.services.docker.serviceConfig.Environment = [
     "HTTP_PROXY=http://127.0.0.1:3738"

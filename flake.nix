@@ -86,7 +86,7 @@
         configurationPath = ./zenbook/configuration.nix;
         homeUsers = {
           l1onsun = import ./zenbook/home.nix;
-          # agent-echo = import ./agent-Echo/home.nix;
+          agentEcho = import ./agent-Echo/home.nix;
         };
       };
 
