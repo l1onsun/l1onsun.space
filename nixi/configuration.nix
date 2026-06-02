@@ -84,7 +84,7 @@
     isNormalUser = true;
     description = "agentEcho";
     extraGroups = [ ];
-    hashedPassword = "$6$eml6s8FOpyA3M3pa$W6lZ62km.kjp8BdWGvOOHrNHcoczJgx/3CMheGiZxBo4PVQ6Hfhebjmc/a6R/mMqpH.xSy056nQQvtPUJWHKb0";
+    hashedPassword = "$6$gIYA0nZas/XBRi03$xD0gJstsT9AwYsvnZkaaQaPn.B/Pswt4DqKZcYv/tNDtxUvJq9T5rGYUwyNPU0D8SFdOOPHZdD0fc23/JW0ER1";
     shell = pkgs.fish;
   };
 

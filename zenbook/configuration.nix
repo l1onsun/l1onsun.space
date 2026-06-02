@@ -93,6 +93,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.l1onsun = {
     isNormalUser = true;
+    homeMode="710";
     description = "l1onsun";
     extraGroups = [
       "networkmanager"
@@ -105,9 +106,10 @@
   };
   users.users.agentEcho = {
     isNormalUser = true;
+    homeMode="750";
     description = "agentEcho";
     extraGroups = [ ];
-    hashedPassword = "$6$eml6s8FOpyA3M3pa$W6lZ62km.kjp8BdWGvOOHrNHcoczJgx/3CMheGiZxBo4PVQ6Hfhebjmc/a6R/mMqpH.xSy056nQQvtPUJWHKb0";
+    hashedPassword = "$6$gIYA0nZas/XBRi03$xD0gJstsT9AwYsvnZkaaQaPn.B/Pswt4DqKZcYv/tNDtxUvJq9T5rGYUwyNPU0D8SFdOOPHZdD0fc23/JW0ER1";
     shell = pkgs.fish;
   };
   programs.fish.enable = true;

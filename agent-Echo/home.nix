@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.username = "agentEcho";
@@ -15,12 +15,18 @@
     ../crypt/ai_models.nix
   ];
 
+  home.file.".pi/agent/AGENTS.md".enable = false;
+  home.file.".pi/agent/extensions".source = lib.mkForce ./pi/agent/extensions;
+  home.file.".pi/agent/skills".enable = false;
+
   home.packages = [
     pkgs.bat
     pkgs.tree
     pkgs.jq
     pkgs.fd
     pkgs.zoxide
+    pkgs.git
+    (pkgs.writeShellScriptBin "hii" (builtins.readFile ./hii.sh))
   ];
 
   home.stateVersion = "25.11";

@@ -1,4 +1,4 @@
-{ pkgs, lpkgs, lib, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = [
     (pkgs.writeShellScriptBin "rsync-to" ''
@@ -49,6 +49,13 @@
     # '')
 
     (pkgs.writeShellScriptBin "ab" (builtins.readFile ../utils/ab.sh))
+
+    # (pkgs.writeShellScriptBin "ii" (builtins.readFile ../agent-Echo/ii.sh))
+
+    (pkgs.writeShellScriptBin "ii" ''
+      ORIGINAL_PROJECT_DIR="$(git rev-parse --show-toplevel)"
+      su - agentEcho -c "${../agent-Echo/ii.sh} $ORIGINAL_PROJECT_DIR"
+    '')
 
     (pkgs.writeShellScriptBin "pro" ''
       if [ $# -eq 0 ]; then
