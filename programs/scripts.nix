@@ -50,11 +50,11 @@
 
     (pkgs.writeShellScriptBin "ab" (builtins.readFile ../utils/ab.sh))
 
-    # (pkgs.writeShellScriptBin "ii" (builtins.readFile ../agent-Echo/ii.sh))
+    # (pkgs.writeShellScriptBin "ii" (builtins.readFile ../agentEcho/ii.sh))
 
     (pkgs.writeShellScriptBin "ii" ''
       ORIGINAL_PROJECT_DIR="$(git rev-parse --show-toplevel)"
-      su - agentEcho -c "${../agent-Echo/ii.sh} $ORIGINAL_PROJECT_DIR"
+      su - agentEcho -c "${../agentEcho/ii.sh} $ORIGINAL_PROJECT_DIR"
     '')
 
     (pkgs.writeShellScriptBin "pro" ''
