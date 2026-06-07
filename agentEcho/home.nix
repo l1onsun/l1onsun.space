@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "agentEcho";
@@ -16,7 +16,7 @@
   ];
 
   home.file.".pi/agent/AGENTS.md".enable = false;
-  home.file.".pi/agent/extensions".source = lib.mkForce ./pi/agent/extensions;
+  home.file.".pi/agent/extensions".enable = false;
   home.file.".pi/agent/skills".enable = false;
 
   programs.fish.interactiveShellInit = ''
