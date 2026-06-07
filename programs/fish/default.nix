@@ -55,6 +55,13 @@
       set --global fish_pager_color_progress brwhite --background=cyan
       set --global fish_pager_color_selected_background -r
     '';
+    functions = {
+      git-show-psub = ''
+        set -l branch_path $argv[1]
+        set -l ext (string match -r '\.[^.]+$' $branch_path)
+        git show $branch_path | psub -s $ext
+      '';
+    };
     shellAbbrs = {
       gp = "git push";
       g = "git";

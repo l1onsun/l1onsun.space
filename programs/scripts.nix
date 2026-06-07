@@ -40,21 +40,10 @@
       ${lib.getExe pkgs.aichat} --model mimo:mimo-v2.5-pro "$@"
     '')
 
-    # (pkgs.writeShellScriptBin "mimo" ''
-    #   ${lib.getExe lpkgs.llm} chat -m mimo-v2.5 "$@"
-    # '')
-
-    # (pkgs.writeShellScriptBin "mimo-pro" ''
-    #   ${lib.getExe lpkgs.llm} chat -m mimo-v2.5-pro "$@"
-    # '')
-
     (pkgs.writeShellScriptBin "ab" (builtins.readFile ../utils/ab.sh))
 
-    # (pkgs.writeShellScriptBin "ii" (builtins.readFile ../agentEcho/ii.sh))
-
     (pkgs.writeShellScriptBin "ii" ''
-      ORIGINAL_PROJECT_DIR="$(git rev-parse --show-toplevel)"
-      su - agentEcho -c "${../agentEcho/ii.sh} $ORIGINAL_PROJECT_DIR"
+      env -i TERM="$TERM" PATH="$PATH" su -p - agentEcho
     '')
 
     (pkgs.writeShellScriptBin "pro" ''

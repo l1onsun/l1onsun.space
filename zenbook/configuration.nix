@@ -158,6 +158,8 @@
     };
   };
   # services.v2raya.enable = true;
+  # services.xray.enable = true;
+  # services.xray.settingsFile = /home/l1onsun/my/xray/config.json;
   # services.resolved.enable = true;
 
   # programs.nh = {
