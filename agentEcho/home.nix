@@ -7,6 +7,7 @@
   home.sessionPath = [ "$HOME/.local/bin" ];
 
   imports = [
+    ../programs/direnv.nix
     ../programs/git.nix
     ../programs/fish
     ../programs/helix.nix
