@@ -22,6 +22,7 @@
     # ../services/smtp
     ../services/ddcutil.nix
     ../crypt/nixos.nix
+    ../agentEcho/module.nix
   ];
   services.myRathole.enable = true;
   services.wastebin.enable = true;
@@ -80,13 +81,7 @@
     ];
     shell = pkgs.fish;
   };
-  users.users.agentEcho = {
-    isNormalUser = true;
-    description = "agentEcho";
-    extraGroups = [ ];
-    hashedPassword = "$6$gIYA0nZas/XBRi03$xD0gJstsT9AwYsvnZkaaQaPn.B/Pswt4DqKZcYv/tNDtxUvJq9T5rGYUwyNPU0D8SFdOOPHZdD0fc23/JW0ER1";
-    shell = pkgs.fish;
-  };
+
 
   nix.settings.experimental-features = [
     "nix-command"

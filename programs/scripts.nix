@@ -43,7 +43,7 @@
     (pkgs.writeShellScriptBin "ab" (builtins.readFile ../utils/ab.sh))
 
     (pkgs.writeShellScriptBin "ii" ''
-      env -i TERM="$TERM" PATH="$PATH" su -p - agentEcho
+      env -i TERM="$TERM" PATH="$PATH" II_ARGS="$*" su -p - agentEcho
     '')
 
     (pkgs.writeShellScriptBin "pro" ''

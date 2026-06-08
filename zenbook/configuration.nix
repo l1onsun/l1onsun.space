@@ -9,6 +9,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../services/nix-ld.nix
+    ../agentEcho/module.nix
   ];
 
   # Bootloader.
@@ -104,32 +105,7 @@
     ];
     shell = pkgs.fish;
   };
-  users.users.agentEcho = {
-    isNormalUser = true;
-    homeMode="750";
-    description = "agentEcho";
-    extraGroups = [ ];
-    hashedPassword = "$6$gIYA0nZas/XBRi03$xD0gJstsT9AwYsvnZkaaQaPn.B/Pswt4DqKZcYv/tNDtxUvJq9T5rGYUwyNPU0D8SFdOOPHZdD0fc23/JW0ER1";
-    shell = pkgs.fish;
-  };
-  security.pam.services.su.rules.auth = lib.mkBefore [
-    {
-      # Правило 1: Проверяем, что целевой пользователь (в которого входят) - agentEcho.
-      # Если да (success), игнорируем этот модуль и идем к следующему (ignore).
-      # Если нет (default), пропускаем 1 правило ниже (default=1), чтобы не давать wheel бессрочный su.
-      module = "pam_succeed_if.so";
-      control = "[success=ignore default=1]";
-      args = [ "user" "=" "agentEcho" ];
-    }
-    {
-      # Правило 2: Проверяем, что текущий пользователь (use_uid) в группе wheel.
-      # Если да, этого достаточно для успешной аутентификации (sufficient) - пароль запрошен не будет.
-      # Если нет, просто идем дальше по стандартным правилам PAM (запрос пароля).
-      module = "pam_succeed_if.so";
-      control = "sufficient";
-      args = [ "use_uid" "user" "ingroup" "wheel" ];
-    }
-  ];
+
   programs.fish.enable = true;
 
   # List packages installed in system profile. To search, run:
