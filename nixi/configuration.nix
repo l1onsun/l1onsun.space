@@ -73,6 +73,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.l1onsun = {
     isNormalUser = true;
+    homeMode="710";
+    description = "l1onsun";
     extraGroups = [
       "wheel"
       "sudo"

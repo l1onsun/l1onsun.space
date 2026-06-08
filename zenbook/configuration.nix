@@ -97,7 +97,7 @@
     homeMode="710";
     description = "l1onsun";
     extraGroups = [
-      "networkmanager"
+      # "networkmanager"
       "wheel"
       "sudo"
       "video"
