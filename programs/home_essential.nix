@@ -3,7 +3,8 @@
   imports = [
     ../programs/helix.nix
     ../programs/zellij
-    ../programs/gitIlya.nix
+    ../programs/git.nix
+    ../programs/git-credential-manager.nix
     ../programs/fish
     ../programs/starship.nix
     ../programs/fzf.nix

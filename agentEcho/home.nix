@@ -48,6 +48,7 @@
     pkgs.jq
     pkgs.fd
     pkgs.zoxide
+    pkgs.tmux
     (pkgs.writeShellScriptBin "hii" (builtins.readFile ./hii.sh))
     (pkgs.writeShellScriptBin "ii-sync" (builtins.readFile ./ii-sync.sh))
   ];

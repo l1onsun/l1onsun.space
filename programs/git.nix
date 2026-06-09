@@ -2,6 +2,8 @@
 {
   home.packages = [
     pkgs.difftastic
+    pkgs.git-credential-manager
+    pkgs.xdg-utils
     pkgs.git-crypt
   ];
   programs.git.package = pkgs.git;
@@ -17,6 +19,9 @@
     ];
 
     settings = {
+      user.name = "Ilya Cherezov";
+      user.email = "cherezov.ia@phystech.edu";
+
       alias = {
         st = "status -sb";
         ll = "log --oneline -n 10";
@@ -49,7 +54,8 @@
 
       init.defaultBranch = "master";
 
-
+      credential.helper = "manager";
+      credential.credentialStore = "secretservice";
     };
   };
 }
