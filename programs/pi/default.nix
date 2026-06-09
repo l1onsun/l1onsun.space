@@ -19,7 +19,8 @@
         nativeBuildInputs = [ pkgs.makeWrapper ];
         postBuild = ''
           wrapProgram $out/bin/pi \
-            --set PI_SKIP_VERSION_CHECK 1
+            --set PI_SKIP_VERSION_CHECK 1 \
+            --add-flags "--tools read,bash,edit,write,grep,find,ls"
         '';
       })
       pkgs.agent-browser
