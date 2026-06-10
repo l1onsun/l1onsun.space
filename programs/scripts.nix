@@ -46,6 +46,10 @@
       env -i TERM="$TERM" PATH="$PATH" II_ARGS="$*" su -p - agentEcho
     '')
 
+    (pkgs.writeShellScriptBin "myip" ''
+      ip route get 1.1.1.1 | awk '{for(i=1;i<=NF;i++) if($i=="src") print $(i+1)}'
+    '')
+
     (pkgs.writeShellScriptBin "pro" ''
       if [ $# -eq 0 ]; then
         echo "Usage: pro <command> [args...]"
