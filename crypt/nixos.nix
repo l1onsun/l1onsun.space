@@ -10,6 +10,7 @@ in
 {
   imports = [
     (importIfDecrypted ./rathole_private.nix)
+    (importIfDecrypted ./netrc.nix)
   ];
 }
 
