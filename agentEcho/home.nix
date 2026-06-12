@@ -43,6 +43,7 @@
   programs.starship.settings.character.format = "👾 $symbol ";
 
   home.packages = [
+    pkgs.just
     pkgs.bat
     pkgs.tree
     pkgs.jq
