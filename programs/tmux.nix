@@ -27,7 +27,7 @@
       
       # Включить extended keys (fix для модификаторов в терминале)
       set -g extended-keys on
-      set -g extended-keys-format csi-u
+      # set -g extended-keys-format csi-u
       
       # True color support
       set -ga terminal-overrides ",alacritty:Tc"

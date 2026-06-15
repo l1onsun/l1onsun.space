@@ -16,6 +16,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../services/docker.nix
     ../services/nix-ld.nix
     ../services/rathole.nix
     ../services/vikunja.nix
@@ -166,9 +167,9 @@
   ];
 
   # TODO: rootless docker
-  virtualisation.docker.enable = true;
-  # virtualisation.docker.package = pkgs.docker_28;
-  virtualisation.docker.storageDriver = "btrfs";
+  # virtualisation.docker.enable = true;
+  # # virtualisation.docker.package = pkgs.docker_28;
+  # virtualisation.docker.storageDriver = "btrfs";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
