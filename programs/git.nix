@@ -24,7 +24,7 @@
 
       alias = {
         st = "status -sb";
-        ll = "log --oneline -n 10";
+        ll = "log --oneline -n 10 --decorate";
         cm = "commit -m";
         ca = "commit --amend";
         cma = "commit --amend";

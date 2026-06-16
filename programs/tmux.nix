@@ -16,18 +16,14 @@
     # Больше истории
     historyLimit = 10000;
     
-    plugins = with pkgs; [
-      tmuxPlugins.rose-pine
-    ];
+    # plugins = with pkgs; [
+    #   tmuxPlugins.rose-pine
+    # ];
     
     extraConfig = ''
-      # Правильная передача Shift+Enter и других модификаторов
-      # bind -n S-Enter send-keys Escape '[13;2u'
-      # bind -n C-Enter send-keys Escape '[13;5u'
-      
       # Включить extended keys (fix для модификаторов в терминале)
       set -g extended-keys on
-      # set -g extended-keys-format csi-u
+      set -g extended-keys-format csi-u
       
       # hjkl pane navigation
       bind h select-pane -L
