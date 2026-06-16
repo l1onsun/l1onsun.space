@@ -20,6 +20,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = [
+    pkgs.ghostty
     pkgs.qbittorrent
     pkgs.smartmontools
 

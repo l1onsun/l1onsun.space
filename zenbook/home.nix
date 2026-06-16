@@ -51,6 +51,7 @@
     };
   in [
     webclaw
+    pkgs.ghostty
     pkgs.unzip
     pkgs.foot
     pkgs.kitty

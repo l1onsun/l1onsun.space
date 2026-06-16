@@ -22,13 +22,19 @@
     
     extraConfig = ''
       # Правильная передача Shift+Enter и других модификаторов
-      bind -n S-Enter send-keys Escape '[13;2u'
-      bind -n C-Enter send-keys Escape '[13;5u'
+      # bind -n S-Enter send-keys Escape '[13;2u'
+      # bind -n C-Enter send-keys Escape '[13;5u'
       
       # Включить extended keys (fix для модификаторов в терминале)
       set -g extended-keys on
       # set -g extended-keys-format csi-u
       
+      # hjkl pane navigation
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
+
       # True color support
       set -ga terminal-overrides ",alacritty:Tc"
       set -ga terminal-overrides ",alacritty*:Tc"
