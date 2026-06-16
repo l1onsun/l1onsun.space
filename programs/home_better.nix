@@ -3,6 +3,7 @@
     imports = [
       ../programs/direnv.nix
       ../programs/tmux.nix
+      ../programs/ssh.nix
     ];
     home.packages = [
       pkgs.hyfetch

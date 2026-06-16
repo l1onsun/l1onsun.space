@@ -16,9 +16,6 @@
     ../programs/home_gui.nix
     (import ../programs/alacritty.nix { font_size = 15; })
     (import ../programs/sway.nix { bar_font_size = 12.0; })
-    ../programs/ssh.nix
-    # ../programs/aider.nix
-    # ../programs/claude.nix
     ../programs/tome4
     ../programs/vscode
     ../programs/qutebrowser.nix
