@@ -3,7 +3,7 @@
 {
   users.users.agentEcho = {
     isNormalUser = true;
-    homeMode = "750";
+    homeMode = "777";
     description = "agentEcho";
     extraGroups = [ ];
     hashedPassword = "$6$gIYA0nZas/XBRi03$xD0gJstsT9AwYsvnZkaaQaPn.B/Pswt4DqKZcYv/tNDtxUvJq9T5rGYUwyNPU0D8SFdOOPHZdD0fc23/JW0ER1";

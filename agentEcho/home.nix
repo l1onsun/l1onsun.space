@@ -15,6 +15,7 @@
     ../programs/fzf.nix
     ../programs/ripgrep.nix
     ../crypt/ai_models.nix
+    ../crypt/helix_private.nix
   ];
 
   home.file.".pi/agent/AGENTS.md".enable = false;
