@@ -21,6 +21,7 @@
     ../services/rathole.nix
     ../services/vikunja.nix
     # ../services/smtp
+    ../services/sudo.nix
     ../services/ddcutil.nix
     ../crypt/nixos.nix
     ../agentEcho/module.nix
@@ -129,7 +130,6 @@
   ];
   security.polkit.enable = true;
   security.rtkit.enable = true; # for pulseaudio?? not sure it necessery
-  security.sudo.package = pkgs.sudo.override { withInsults = true; };
 
   programs.fish.enable = true;
   # programs.nh = {

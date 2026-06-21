@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ../services/nix-ld.nix
     ../services/docker.nix
+    ../services/sudo.nix
     ../agentEcho/module.nix
   ];
 
@@ -72,7 +73,6 @@
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  security.sudo.package = pkgs.sudo.override { withInsults = true; };
   security.pam.services.swaylock = { };
   services.pipewire = {
     enable = true;
@@ -125,7 +125,6 @@
     "agentEcho"
   ];
   environment.variables.EDITOR = "hx";
-  environment.variables.SUDO_ASKPASS = "${pkgs.x11_ssh_askpass}/libexec/x11-ssh-askpass";
   environment.variables.NIXOS_HOME = "/home/l1onsun/my/l1onsun.space";
   fonts.packages = [
     pkgs.noto-fonts
