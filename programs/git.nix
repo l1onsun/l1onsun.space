@@ -14,7 +14,6 @@
 
     ignores = [
       ".direnv/"
-      ".envrc"
       "mpl-pygls-lsp.log"
     ];
 

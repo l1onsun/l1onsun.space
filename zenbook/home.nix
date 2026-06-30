@@ -24,30 +24,7 @@
   ];
   # programs.helix.package = helix_pkg;
 
-  home.packages = let
-    webclaw = pkgs.rustPlatform.buildRustPackage {
-      pname = "webclaw-cli";
-      version = "0.1.0";
-      src = pkgs.fetchFromGitHub {
-        owner = "0xMassi";
-        repo = "webclaw";
-        rev = "main";
-        sha256 = "1jaxa4is3pf9k7wbwi2hx5blv2xql1jz5akvysd4vay0r1gbgbha";
-      };
-      cargoHash = "sha256-wJPdTd6vrvwALr2gHI6vy4Z6g+enVlarILzvPEzdrWQ=";
-      buildAndTestSubdir = "crates/webclaw-cli";
-      nativeBuildInputs = with pkgs; [
-        pkg-config
-        cmake
-        perl
-        go
-        clang
-        git
-        rustPlatform.bindgenHook
-      ];
-    };
-  in [
-    webclaw
+  home.packages = [
     pkgs.ghostty
     pkgs.unzip
     pkgs.foot
@@ -108,6 +85,7 @@
     pkgs.p7zip
     pkgs.audacity
 
+    pkgs.krita
     pkgs.pinta
 
     pkgs.gping
