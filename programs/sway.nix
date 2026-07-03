@@ -22,6 +22,7 @@
         lib.mkOptionDefault {
           "${modifier}+tab" = "workspace back_and_forth";
           "${modifier}+n" = "exec swaync-client -t -sw";
+          "${modifier}+Shift+n" = "exec swaync-client -d";
           "${modifier}+Shift+Return" = "exec ${pkgs.alacritty} -e fish -C 'my/gits/l1onsun.space/; onefetch'";
           "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
           "XF86MonBrightnessUp" = "exec brightnessctl set +5%";

@@ -71,5 +71,23 @@
       HTTPS_PROXY=http://localhost:3738 \
         "$@"
     '')
+
+    (pkgs.writeShellScriptBin "noti" ''
+      if [ $# -eq 0 ]; then
+        echo "Usage: noti <command> [args...]"
+        exit 1
+      fi
+
+      "$@"
+      EXIT_CODE=$?
+
+      if [ $EXIT_CODE -eq 0 ]; then
+        ${lib.getExe pkgs.libnotify} "✅ Готово" "$* завершено успешно"
+      else
+        ${lib.getExe pkgs.libnotify} -u critical "❌ Ошибка" "$* завершено с кодом $EXIT_CODE"
+      fi
+
+      exit $EXIT_CODE
+    '')
   ];
 }
