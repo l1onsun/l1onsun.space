@@ -11,6 +11,7 @@
     ../services/nix-ld.nix
     ../services/docker.nix
     ../services/sudo.nix
+    ../crypt/netrc.nix
     ../agentEcho/module.nix
   ];
 

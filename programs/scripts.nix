@@ -57,6 +57,16 @@
       fi
 
       ALL_PROXY=socks5://localhost:3737 \
+        "$@"
+    '')
+
+    (pkgs.writeShellScriptBin "proh" ''
+      if [ $# -eq 0 ]; then
+        echo "Usage: proh <command> [args...]"
+        exit 1
+      fi
+
+      ALL_PROXY=socks5://localhost:3737 \
       HTTP_PROXY=http://localhost:3738 \
       HTTPS_PROXY=http://localhost:3738 \
         "$@"
