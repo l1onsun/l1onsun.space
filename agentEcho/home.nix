@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.username = "agentEcho";
@@ -19,7 +19,12 @@
   ];
 
   home.file.".pi/agent/AGENTS.md".enable = false;
-  home.file.".pi/agent/extensions".enable = false;
+  home.file.".pi/agent/extensions".source = lib.mkForce (
+    pkgs.runCommand "commit-ext" { } ''
+      mkdir -p $out
+      cp ${../programs/pi/extensions/commit.ts} $out/commit.ts
+    ''
+  );
   home.file.".pi/agent/skills".enable = false;
 
   programs.fish.loginShellInit = ''
@@ -53,6 +58,7 @@
     pkgs.tmux
     (pkgs.writeShellScriptBin "hii" (builtins.readFile ./hii.sh))
     (pkgs.writeShellScriptBin "ii-sync" (builtins.readFile ./ii-sync.sh))
+    (pkgs.writeScriptBin "ii-diff" (builtins.readFile ./ii-diff.fish))
   ];
   programs.git.extraConfig.safe.directory = [ "*" ];
 
