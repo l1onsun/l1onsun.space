@@ -14,6 +14,7 @@
     ../programs/starship.nix
     ../programs/fzf.nix
     ../programs/ripgrep.nix
+    ../programs/scripts.nix
     ../crypt/ai_models.nix
     ../crypt/helix_private.nix
   ];
