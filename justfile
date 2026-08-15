@@ -15,6 +15,9 @@ droid-switch:
 update:
     nix flake update
 
+proxy-switch:
+    sudo nixos-rebuild switch --flake {{justfile_directory()}}/proxy#vps --target-host "root@176.124.192.137"
+
 current-nixpkgs-rev:
     #!/usr/bin/env fish
     set input_name (jq -r '.nodes.root.inputs.nixpkgs' flake.lock)
