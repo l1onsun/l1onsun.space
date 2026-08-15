@@ -42,6 +42,7 @@
     pkgs.gamescope
 
     pkgs.git-crypt
+    pkgs.tea # gitea cli
     # pkgs.pipx
 
     pkgs.pinta
