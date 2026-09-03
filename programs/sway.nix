@@ -55,6 +55,7 @@
       };
       input."type:keyboard" = {
         xkb_layout = "us,ru";
+        xkb_variant = "altgr-intl,";
         xkb_options = "grp:alt_shift_toggle,caps:swayescape";
         repeat_delay = "180";
         repeat_rate = "30";

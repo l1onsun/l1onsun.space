@@ -50,6 +50,8 @@
   programs.starship.settings.character.format = "👾 $symbol ";
 
   home.packages = [
+    (pkgs.pipx.overridePythonAttrs { doCheck = false; })
+    pkgs.gcc
     pkgs.just
     pkgs.bat
     pkgs.tree
