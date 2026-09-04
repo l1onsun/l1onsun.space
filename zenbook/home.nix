@@ -97,6 +97,8 @@
     pkgs.appimage-run
 
     pkgs.opencode
+    pkgs.skills
+
     pkgs.electrum
   ];
   programs.firefox.enable = true;
