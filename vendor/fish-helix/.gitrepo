@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://github.com/sshilovsky/fish-helix.git
 	branch = main
-	commit = e375bc5e0cd4a232146e148b33892f2b3c44a9db
+	commit = c9487ea37dafee157cefb8a89c145bc98d21fd6b
 	parent = 2cf67b757924050063abb59e4a558f7b1a5a1bbf
 	method = merge
 	cmdver = 0.4.9
