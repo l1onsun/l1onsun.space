@@ -69,6 +69,10 @@
           };
         }
         {
+          name = "json";
+          auto-format = false;
+        }
+        {
           name = "jinja";
           block-comment-tokens = {
             start = "<!--";
