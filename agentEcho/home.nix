@@ -24,6 +24,7 @@
     pkgs.runCommand "commit-ext" { } ''
       mkdir -p $out
       cp ${../programs/pi/extensions/commit.ts} $out/commit.ts
+      cp ${../programs/pi/extensions/geo-ip-guard.ts} $out/geo-ip-guard.ts
     ''
   );
   home.file.".pi/agent/skills".enable = false;
