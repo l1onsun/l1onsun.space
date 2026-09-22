@@ -19,6 +19,9 @@ let
 
     [server.services.wastebin]
     bind_addr = "0.0.0.0:5204"
+
+    [server.services.gramps]
+    bind_addr = "0.0.0.0:5205"
   '';
 in {
   systemd.services.rathole-server = {

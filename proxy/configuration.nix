@@ -78,6 +78,9 @@ in
             virtualHosts."paste.cherezov.xyz".extraConfig = ''
               reverse_proxy http://0.0.0.0:5204
             '';
+            virtualHosts."family.cherezov.xyz".extraConfig = ''
+              reverse_proxy http://0.0.0.0:5205
+            '';
           };
 
           # Timezone / locale

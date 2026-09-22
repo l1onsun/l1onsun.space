@@ -16,7 +16,7 @@ update:
     nix flake update
 
 proxy-switch:
-    sudo nixos-rebuild switch --flake {{justfile_directory()}}/proxy#vps --target-host "root@176.124.192.137"
+    nixos-rebuild switch --flake {{justfile_directory()}}/proxy#vps --target-host "root@176.124.192.137"
 
 current-nixpkgs-rev:
     #!/usr/bin/env fish
