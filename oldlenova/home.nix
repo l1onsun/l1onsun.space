@@ -30,6 +30,7 @@
     telegram-desktop
   ];
   programs.firefox.enable = true;
+  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
 
 
   home.stateVersion = "23.11";

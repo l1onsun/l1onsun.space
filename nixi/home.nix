@@ -58,6 +58,7 @@
   ];
   programs.waybar.enable = true;
   programs.firefox.enable = true;
+  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

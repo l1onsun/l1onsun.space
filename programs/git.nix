@@ -15,6 +15,7 @@
     ignores = [
       ".direnv/"
       "mpl-pygls-lsp.log"
+      "local"
     ];
 
     settings = {
