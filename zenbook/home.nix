@@ -39,6 +39,7 @@
     pkgs.wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     pkgs.mako # notification system deveoped by swaywm maintainer
     pkgs.fuzzel
+    pkgs.acpi # battery
 
     pkgs.tuxguitar
     pkgs.telegram-desktop

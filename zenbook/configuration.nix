@@ -27,6 +27,13 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  networking.firewall.allowedTCPPorts = [
+    # 2283 # immich
+    # 8017 # ???
+    # 8000 # marketw
+    # 8025 # marketw
+    9418 # git daemon
+  ];
 
 
   # Set your time zone.

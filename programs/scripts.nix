@@ -72,6 +72,10 @@
         "$@"
     '')
 
+    (pkgs.writeShellScriptBin "gpit" ''
+      proh pi --model openai-codex/gpt-6-sol "$@"
+    '')
+
     (pkgs.writeShellScriptBin "noti" ''
       if [ $# -eq 0 ]; then
         echo "Usage: noti <command> [args...]"
