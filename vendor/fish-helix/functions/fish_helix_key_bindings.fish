@@ -55,7 +55,9 @@ function fish_helix_key_bindings --description 'helix-like key bindings for fish
     # Inherit shared key bindings.
     # Do this first so helix-bindings win over default.
     for mode in insert default visual
-        __fish_shared_key_bindings -s -M $mode
+        # fish 4.8 prints the shared bindings for eval; it reads $argv from this scope.
+        set -l argv -s -M $mode
+        eval "$(__fish_shared_key_bindings)"
     end
 
     bind -s --preset -M insert \r execute
