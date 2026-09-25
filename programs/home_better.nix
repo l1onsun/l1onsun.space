@@ -18,7 +18,10 @@
       pkgs.broot
       (lib.lowPrio pkgs.inetutils)  # telnet +
       pkgs.iputils  # ping
-      (pkgs.writeShellScriptBin "ii-pull" "git pull ii \$(git branch --show-current)")
+      (pkgs.writeShellScriptBin "ii-pull" ''
+        git pull ii $(git branch --show-current)
+        ii git fetch
+      '')
     ];
 }
 
