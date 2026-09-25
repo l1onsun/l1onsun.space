@@ -43,6 +43,7 @@
 
     pkgs.git-crypt
     pkgs.tea # gitea cli
+    pkgs.stgit
     # pkgs.pipx
 
     pkgs.pinta
