@@ -1,7 +1,2 @@
 *.teaa filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
-
-crypt/** filter=git-crypt diff=git-crypt
-crypt/default.nix !filter !diff
-crypt/home.nix !filter !diff
-crypt/nixos.nix !filter !diff

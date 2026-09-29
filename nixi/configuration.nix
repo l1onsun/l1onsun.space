@@ -24,7 +24,6 @@
     ../services/sudo.nix
     ../services/networkmanager.nix
     ../services/ddcutil.nix
-    ../crypt/nixos.nix
     ../agentEcho/module.nix
   ];
   services.myRathole.enable = true;

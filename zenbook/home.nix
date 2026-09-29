@@ -20,7 +20,6 @@
     ../programs/vscode
     ../programs/qutebrowser.nix
     ../programs/scripts.nix
-    ../crypt
   ];
   # programs.helix.package = helix_pkg;
 
