@@ -12,8 +12,16 @@ export default function (pi: ExtensionAPI) {
     if (!ctx.hasUI) return undefined;
 
     if (isToolCallEventType("bash", event)) {
+      const { command } = event.input;
+      // Show each `;`-separated command on its own line
+      const shown = command.includes(";")
+        ? command
+            .split(";")
+            .map((part) => part.trim())
+            .join("\n")
+        : command;
       const choice = await ctx.ui.select(
-        `⚠️ bash: ${event.input.command}\n\nAllow?`,
+        `⚠️ bash: ${shown}\n\nAllow?`,
         ["Yes", "No"],
       );
       if (choice !== "Yes") {
