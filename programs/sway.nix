@@ -15,6 +15,7 @@
       startup = [
         { command = "swaync"; }
       ];
+      bindkeysToCode = true;
       keybindings =
         let
           modifier = config.wayland.windowManager.sway.config.modifier;
