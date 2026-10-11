@@ -161,6 +161,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   networking.firewall.allowedTCPPorts = [
+    7777 # Ksysha
     # 2283 # immich
     # 8017 # ???
     # 8000 # marketw
